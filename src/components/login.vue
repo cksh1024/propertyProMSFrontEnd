@@ -2,7 +2,7 @@
     <div>
         <h1 style="font-size: 50px">房地产项目设计流程管理系统</h1>
         <div class="container">
-            <div class="login">
+            <div class="login" @keydown.enter="login">
                 <h2 style="margin-top: 10px">登录</h2>
                 <el-form>
                     <el-form-item>
@@ -72,6 +72,6 @@ export default {
         padding: 25px 20px;
     }
     html {
-        background-image: url('../../static/imgs/background2.jpg');
+        background: url('../../static/imgs/background2.jpg');
     }
 </style>
