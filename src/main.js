@@ -6,29 +6,32 @@ import axios from 'axios'
 import router from './router'
 import store from './vuex/store'
 
-import {
-  Link,
-  Upload,
-  Button,
-  Form,
-  FormItem,
-  Input,
-  Popconfirm,
-  Message,
-  MessageBox
-} from 'element-ui'
+// import {
+//   Link,
+//   Upload,
+//   Button,
+//   Form,
+//   FormItem,
+//   Input,
+//   Popconfirm,
+//   Message,
+//   MessageBox
+// } from 'element-ui'
 
-Vue.component(Link.name, Link)
-Vue.component(Upload.name, Upload)
-Vue.component(Button.name, Button)
-/* eslint-disable */
-Vue.component(Form.name, Form)
-Vue.component(FormItem.name, FormItem)
-Vue.component(Input.name, Input)
-Vue.component(Popconfirm.name, Popconfirm)
+import ElementUI from 'element-ui'
 
-Vue.prototype.$message = Message
-Vue.prototype.$confirm = MessageBox.confirm
+Vue.use(ElementUI)
+
+// Vue.component(Link.name, Link)
+// Vue.component(Upload.name, Upload)
+// Vue.component(Button.name, Button)
+// Vue.component(Form.name, Form)
+// Vue.component(FormItem.name, FormItem)
+// Vue.component(Input.name, Input)
+// Vue.component(Popconfirm.name, Popconfirm)
+
+// Vue.prototype.$message = Message
+// Vue.prototype.$confirm = MessageBox.confirm
 
 axios.defaults.baseURL = 'http://localhost:8080/'
 
