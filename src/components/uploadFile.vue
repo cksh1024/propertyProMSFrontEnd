@@ -16,9 +16,8 @@
 </template>
 
 <script>
-/* eslint-disable */
 export default {
-    data() {
+    data () {
         return {
             fileList: [],
             action: 'http://localhost:8080/lclgl/upload'
@@ -26,14 +25,14 @@ export default {
         }
     },
     methods: {
-        submitUpload() {
-            this.$refs.upload.submit();
+        submitUpload () {
+            this.$refs.upload.submit()
         },
-        handleRemove(file, fileList) {
-            console.log(file, fileList);
+        handleRemove (file, fileList) {
+            console.log(file, fileList)
         },
-        handlePreview(file) {
-            console.log(file);
+        handlePreview (file) {
+            console.log(file)
         }
     }
 }

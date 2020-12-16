@@ -18,9 +18,7 @@
 </template>
 
 <script>
-/* eslint-disable */
 import axios from 'axios'
-import {Link} from 'element-ui'
 export default {
     mounted () {
         this.getFileList('')
@@ -33,11 +31,11 @@ export default {
         }
     },
     methods: {
-        getFileList(path) {
+        getFileList (path) {
             let {rootDirectory} = this
             let realPath = ''
             for (let index in rootDirectory) {
-                if (index != 0) realPath += rootDirectory[index] + '\\'
+                if (index !== '0') realPath += rootDirectory[index] + '\\'
             }
             realPath += path
             let param = new FormData()
@@ -49,7 +47,7 @@ export default {
                     let directory = res.data.directorys[index]
                     let directorys = directory.split('\\')
                     let dir = {
-                        'dirName': directorys[directorys.length-1],
+                        'dirName': directorys[directorys.length - 1],
                         'index': index,
                         'showDelBtn': false
                     }
@@ -65,9 +63,9 @@ export default {
                 this.files = []
                 for (let index in res.data.files) {
                     let file = res.data.files[index]
-                    let fs = file.split("\\")
+                    let fs = file.split('\\')
                     let f = {
-                        fileName: fs[fs.length-1],
+                        fileName: fs[fs.length - 1],
                         id: index,
                         showDelBtn: false
                     }
@@ -78,51 +76,43 @@ export default {
                 console.log(err)
             })
         },
-        returnLastDir() {
+        returnLastDir () {
             this.rootDirectory.pop()
             this.getFileList('')
         },
-        skipDir(index) {
-            this.rootDirectory = this.rootDirectory.filter((value, key) => key<=index)
+        skipDir (index) {
+            this.rootDirectory = this.rootDirectory.filter((value, key) => key <= index)
             this.getFileList('')
         },
-        downLoad(fileName) {
-            let filePath = ''
-            for (let index in this.rootDirectory) filePath += this.rootDirectory[index] + '/'
-            filePath += fileName
-
-            window.open(`http://localhost:8080/lclgl/downLoad?fileName=${fileName}&filePath=${filePath}`)
-
-        },
-        delFile(fileName, type) {
+        delFile (fileName, type) {
             let {rootDirectory} = this
             let realPath = ''
             for (let index in rootDirectory) {
-                if (index != 0) realPath += rootDirectory[index] + '\\'
+                if (index !== '0') realPath += rootDirectory[index] + '\\'
             }
             realPath += fileName
             let param = new FormData()
             param.append('path', realPath)
             axios.post('lclgl/delFile', param)
             .then(res => {
-                if (res.data.status == -1) {
+                if (res.data.status === -1) {
                     return this.$message.error(res.data.msg)
                 }
                 this.$message({
                     type: 'success',
                     message: res.data.msg
                 })
-                if (type == 'file') {
-                    this.files = this.files.filter(item => item.fileName != fileName)
+                if (type === 'file') {
+                    this.files = this.files.filter(item => item.fileName !== fileName)
                 } else {
-                    this.directorys = this.directorys.filter(item => item.dirName != fileName)
+                    this.directorys = this.directorys.filter(item => item.dirName !== fileName)
                 }
             })
-            .catch(err => {
+            .catch(() => {
                 this.$message.error('删除失败！')
             })
         },
-        open(fileName, type) {
+        open (fileName, type) {
             this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
@@ -131,12 +121,18 @@ export default {
             .then(() => {
                 this.delFile(fileName, type)
             })
-            .catch((err) => {
+            .catch(() => {
                 this.$message({
                     type: 'info',
                     message: '已取消删除'
                 })
             })
+        },
+        downLoad (fileName) {
+            let filePath = ''
+            for (let index in this.rootDirectory) filePath += this.rootDirectory[index] + '/'
+            filePath += fileName
+            window.open(`http://localhost:8080/lclgl/downLoad?fileName=${fileName}&filePath=${filePath}`)
         }
     }
 }

@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import 'element-ui/lib/theme-chalk/index.css'
-import Login from '../components/login.vue'
-// import File from '../components/file.vue'
+// import Login from '../components/login.vue'
+import File from '../components/file.vue'
 // import UploadFile from '../components/uploadFile.vue'
 import Employee from '../components/employee/employee.vue'
 import FrontDesk from '../components/frontDesk/frontDesk.vue'
@@ -15,7 +15,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Login
+      component: File
     },
     {
       path: '/employee',

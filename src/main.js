@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import axios from 'axios'
 import router from './router'
+import store from './vuex/store'
 
 import {
   Link,
@@ -20,6 +21,7 @@ import {
 Vue.component(Link.name, Link)
 Vue.component(Upload.name, Upload)
 Vue.component(Button.name, Button)
+/* eslint-disable */
 Vue.component(Form.name, Form)
 Vue.component(FormItem.name, FormItem)
 Vue.component(Input.name, Input)
@@ -37,5 +39,6 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  store
 })

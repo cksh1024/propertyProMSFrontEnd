@@ -19,7 +19,6 @@
 </template>
 
 <script>
-/* eslint-disable */
 import axios from 'axios'
 export default {
     data () {
@@ -31,16 +30,17 @@ export default {
     methods: {
         login () {
             let param = new FormData()
-            param.append("username", this.username)
-            param.append("password", this.password)
+            param.append('username', this.username)
+            param.append('password', this.password)
             axios.post('lclgl/login', param)
-            .then (res => {
-                if (res.data.status == -1) {
+            .then(res => {
+                if (res.data.status === -1) {
                     return this.$message.error(res.data.msg)
                 }
+
                 this.$router.push(`/${res.data.type}`)
             })
-            .catch (err => {
+            .catch(err => {
                 console.log(err)
             })
         }
