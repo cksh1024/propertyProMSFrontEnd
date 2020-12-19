@@ -7,18 +7,19 @@
         <p v-for="dir in directorys" :key="dir.dirName+dir.id" class="overflow-hidden" @mouseenter="dir.showDelBtn=!dir.showDelBtn" @mouseleave="dir.showDelBtn=!dir.showDelBtn">
             <i class="el-icon-folder fl"></i>
             <el-link v-text="dir.dirName" class="dirFont fl" @click="getFileList(dir.dirName)"></el-link>
-            <el-button type="danger" icon="el-icon-delete" circle v-if="dir.showDelBtn" @click="open(dir.dirName, 'dir')"></el-button>
+            <el-button type="danger" icon="el-icon-delete" circle v-if="dir.showDelBtn && staffInfo.type==='manager'" @click="open(dir.dirName, 'dir')"></el-button>
         </p>
         <p v-for="file in files" :key="file.fileName+file.id" class="overflow-hidden"  @mouseenter="file.showDelBtn=!file.showDelBtn" @mouseleave="file.showDelBtn=!file.showDelBtn">
             <i class="el-icon-document fl"></i>
             <el-link class="dirFont fl" v-text="file.fileName" @click="downLoad(file.fileName)"></el-link>
-            <el-button type="danger" icon="el-icon-delete" circle v-if="file.showDelBtn"  @click="open(file.fileName, 'file')"></el-button>
+            <el-button type="danger" icon="el-icon-delete" circle v-if="file.showDelBtn && staffInfo.type==='manager'" @click="open(file.fileName, 'file')"></el-button>
         </p>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
+import {mapState} from 'vuex'
 export default {
     mounted () {
         this.getFileList('')
@@ -134,6 +135,9 @@ export default {
             filePath += fileName
             window.open(`http://localhost:8080/lclgl/download?fileName=${fileName}&filePath=${filePath}`)
         }
+    },
+    computed: {
+        ...mapState(['staffInfo'])
     }
 }
 </script>

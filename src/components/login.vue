@@ -44,7 +44,8 @@ export default {
                 }
                 this.setStaffInfo(staffInfo)
                 sessionStorage.setItem('staffInfo', JSON.stringify(staffInfo))
-                this.$router.push(`/${res.data.type}`)
+                // this.$router.push(`/${res.data.type}`)
+                this.$router.push('/file')
             })
             .catch(err => {
                 console.log(err)
