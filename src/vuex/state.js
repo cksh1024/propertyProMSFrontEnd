@@ -1,6 +1,6 @@
 export default {
     staffInfo: {
-        staffId: '',
+        type: '',
         staffType: ''
     }
 }

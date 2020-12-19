@@ -9,7 +9,4 @@ export default {
 </script>
 
 <style>
-    html {
-        background: white;
-    }
 </style>

@@ -132,7 +132,7 @@ export default {
             let filePath = ''
             for (let index in this.rootDirectory) filePath += this.rootDirectory[index] + '/'
             filePath += fileName
-            window.open(`http://localhost:8080/lclgl/downLoad?fileName=${fileName}&filePath=${filePath}`)
+            window.open(`http://localhost:8080/lclgl/download?fileName=${fileName}&filePath=${filePath}`)
         }
     }
 }

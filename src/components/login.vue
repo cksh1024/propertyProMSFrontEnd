@@ -6,10 +6,10 @@
                 <h2 style="margin-top: 10px">登录</h2>
                 <el-form>
                     <el-form-item>
-                        <el-input class="input" placeholder="请输入账号" v-model="username"></el-input>
+                        <el-input class="login_input" placeholder="请输入账号" v-model="username"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-input class="input" placeholder="请输入密码" v-model="password" type="password"></el-input>
+                        <el-input class="login_input" placeholder="请输入密码" v-model="password" type="password"></el-input>
                     </el-form-item>
                 </el-form>
                 <el-button type="primary" round style="width: 150px" @click="login">登录</el-button>
@@ -43,6 +43,7 @@ export default {
                     type: res.data.type
                 }
                 this.setStaffInfo(staffInfo)
+                sessionStorage.setItem('staffInfo', JSON.stringify(staffInfo))
                 this.$router.push(`/${res.data.type}`)
             })
             .catch(err => {
@@ -78,7 +79,7 @@ export default {
         background-color: rgba(255, 255, 255, .5);
         color: black;
     }
-    .el-input__inner {
+    .login_input .el-input__inner {
         border-radius: 30px;
         font-size: 15px;
         padding: 25px 20px;
