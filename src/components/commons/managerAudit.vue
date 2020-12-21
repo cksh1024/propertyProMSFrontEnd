@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-table :data="auditInfo" style="width: 100%" border :height="height?height:250">
+        <el-table :data="auditInfo" style="width: 100%" border :height="height?height:500">
             <el-table-column prop="commitDate" label="日期" width="180" sortable></el-table-column>
             <el-table-column prop="staffInfo.staffName" label="姓名" width="180"></el-table-column>
             <el-table-column prop="auditFile" label="审核文件">
@@ -18,7 +18,7 @@
                 <template slot-scope="scope">
                     <el-button type="warning" v-if="scope.row.auditStatus==='待审核'" @click="auditOperation(scope.row, 'acceptAudit')">接受审核</el-button>
                     <el-button type="success" v-if="scope.row.auditStatus!=='待审核'" @click="auditOperation(scope.row, 'pass')">通过</el-button>
-                    <el-button type="danger" v-if="scope.row.auditStatus!=='待审核'" @click="auditOperation(scope.row, 'reject')">驳回</el-button>
+                    <el-button type="danger" v-if="scope.row.auditStatus!=='待审核'" @click="auditOperation(scope.row, 'reject', true)">驳回</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -69,18 +69,46 @@ export default {
         downloadFile (row) {
             window.open(`http://localhost:8080/lclgl/download/${row.auditFile}/${row.auditStatus}/${row.staffInfo.userId}/${row.pro.proId}`)
         },
-        auditOperation (row, operation) {
+        auditOperation (row, operation, open) {
+            if (open) {
+                this.$prompt('请输入修改意见', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消'
+                })
+                .then(({ value }) => {
+                    this.processAudit(row, operation, value)
+                })
+                .catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消'
+                    })
+                })
+            } else {
+                this.processAudit(row, operation, '无')
+            }
+        },
+        processAudit (row, operation, suggestion) {
+            let r = ''
+            if (operation === 'acceptAudit') r = '已接受审核'
+            else if (operation === 'reject') r = '已驳回'
+            else if (operation === 'pass') r = '已通过'
             let param = new FormData()
             param.append('auditId', row.auditId)
             param.append('auditFile', row.auditFile)
             param.append('staffId', row.staffInfo.userId)
             param.append('proName', row.pro.proName)
             param.append('operation', operation)
+            param.append('suggestion', suggestion)
             axios.post('lclgl/processAudit', param)
             .then(res => {
-               if (res.data.status === 1) {
-                   this.updateTableData()
-               }
+                if (res.data.status === 1) {
+                    this.updateTableData()
+                    this.$message({
+                        type: 'success',
+                        message: r
+                    })
+                }
             })
             .catch(err => {
                 console.log(err)

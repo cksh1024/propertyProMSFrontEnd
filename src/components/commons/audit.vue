@@ -14,6 +14,7 @@
                     <el-tag :type="statusType(scope.row.auditStatus)" disable-transitions>{{scope.row.auditStatus}}</el-tag>
                 </template>
             </el-table-column>
+            <el-table-column prop="suggestion" label="意见" width="180"></el-table-column>
         </el-table>
         <UploadFile :updateTableData="updateTableData"/>
     </div>

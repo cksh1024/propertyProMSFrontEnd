@@ -34,6 +34,7 @@ Vue.use(ElementUI)
 // Vue.prototype.$confirm = MessageBox.confirm
 
 axios.defaults.baseURL = 'http://localhost:8080/'
+// axios.defaults.baseURL = 'http://192.168.43.62:8080/'
 axios.defaults.withCredentials = true
 
 Vue.config.productionTip = false

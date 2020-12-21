@@ -6,7 +6,6 @@ import Employee from '../components/employee/employee.vue'
 import FrontDesk from '../components/frontDesk/frontDesk.vue'
 import Manager from '../components/manager/manager.vue'
 import SuperUser from '../components/superUser/superUser.vue'
-import File from '../components/commons/file.vue'
 
 Vue.use(Router)
 
@@ -31,10 +30,6 @@ export default new Router({
     {
       path: '/superUser',
       component: SuperUser
-    },
-    {
-      path: '/file',
-      component: File
     }
   ]
 })
