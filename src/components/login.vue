@@ -1,7 +1,7 @@
 <template>
-    <div class="bg">
+    <div :class="isActive ? 'bg1' : 'bg2'" @click="isActive=true">
         <h1 class="title">房地产项目设计流程管理系统</h1>
-        <div class="container">
+        <div class="container" @click.stop="isActive=false">
             <div class="login" @keydown.enter="login">
                 <h2 style="margin-top: 10px">登录</h2>
                 <el-form>
@@ -25,7 +25,8 @@ export default {
     data () {
         return {
             username: '',
-            password: ''
+            password: '',
+            isActive: true
         }
     },
     methods: {
@@ -84,8 +85,12 @@ export default {
         font-size: 15px;
         padding: 25px 20px;
     }
-    .bg {
+    .bg1 {
         height: 100%;
         background: url('../../static/imgs/background2.jpg');
+    }
+    .bg2 {
+        height: 100%;
+        background: url('../../static/imgs/background.jpg');
     }
 </style>

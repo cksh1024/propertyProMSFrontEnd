@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-table :data="auditInfo" style="width: 100%" border :height="height?height:500">
+        <el-table :data="auditInfo" style="width: 100%" border>
             <el-table-column prop="commitDate" label="日期" width="180" sortable></el-table-column>
             <el-table-column prop="staffInfo.staffName" label="姓名" width="180"></el-table-column>
             <el-table-column prop="auditFile" label="审核文件">
