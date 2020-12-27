@@ -12,7 +12,7 @@
                         <el-input class="login_input" placeholder="请输入密码" v-model="password" type="password"></el-input>
                     </el-form-item>
                 </el-form>
-                <el-button type="primary" round style="width: 150px" @click="login">登录</el-button>
+                <el-button type="primary" round style="width: 150px;" @click="login">登录</el-button>
             </div>
         </div>
     </div>
@@ -62,6 +62,7 @@ export default {
         margin-top: 0;
         position: relative;
         top: 40px;
+        text-align: center;
     }
     .container {
         max-width: 500px;
@@ -92,5 +93,8 @@ export default {
     .bg2 {
         height: 100%;
         background: url('../../static/imgs/background.jpg');
+    }
+    h2{
+        text-align: center;
     }
 </style>

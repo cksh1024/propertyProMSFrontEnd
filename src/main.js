@@ -5,6 +5,7 @@ import App from './App'
 import axios from 'axios'
 import router from './router'
 import store from './vuex/store'
+import echarts from 'echarts'
 
 // import {
 //   Link,
@@ -36,6 +37,7 @@ Vue.use(ElementUI)
 axios.defaults.baseURL = 'http://localhost:8080/'
 // axios.defaults.baseURL = 'http://192.168.43.62:8080/'
 axios.defaults.withCredentials = true
+Vue.prototype.$echarts = echarts
 
 Vue.config.productionTip = false
 
