@@ -1,7 +1,7 @@
 <template>
-    <div :class="isActive ? 'bg1' : 'bg2'" @click="isActive=true">
-        <h1 class="title">房地产项目设计流程管理系统</h1>
-        <div class="container" @click.stop="isActive=false">
+    <div @click="isActive=true">
+        <h1 class="title" style="z-index:1;">房地产项目设计流程管理系统</h1>
+        <div class="container" @click.stop="isActive=false" style="z-index:1;">
             <div class="login" @keydown.enter="login">
                 <h2 style="margin-top: 10px">登录</h2>
                 <el-form>
@@ -15,6 +15,10 @@
                 <el-button type="primary" round style="width: 150px" @click="login">登录</el-button>
             </div>
         </div>
+        <div class="bg1"></div>
+        <transition name="bg2">
+            <div class="bg2" v-if="isActive"></div>
+        </transition>
     </div>
 </template>
 
@@ -45,7 +49,8 @@ export default {
                 }
                 this.setStaffInfo(staffInfo)
                 sessionStorage.setItem('staffInfo', JSON.stringify(staffInfo))
-                this.$router.push(`/${res.data.type}`)
+                // this.$router.push(`/${res.data.type}`)
+                this.$router.push('/file')
             })
             .catch(err => {
                 console.log(err)
@@ -87,10 +92,26 @@ export default {
     }
     .bg1 {
         height: 100%;
+        width: 100%;
         background: url('../../static/imgs/background2.jpg');
+        position: absolute;
+        top: 0;
+        left: 0;
+        -webkit-filter: blur(9px);
+        filter: blur(9px);
     }
     .bg2 {
         height: 100%;
-        background: url('../../static/imgs/background.jpg');
+        width: 100%;
+        background: url('../../static/imgs/background2.jpg');
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .bg2-enter-active, .bg2-leave-active {
+        transition: opacity .8s;
+    }
+    .bg2-enter, .bg2-leave-to {
+        opacity: 0;
     }
 </style>
