@@ -12,7 +12,7 @@
                         <el-input class="login_input" placeholder="请输入密码" v-model="password" type="password"></el-input>
                     </el-form-item>
                 </el-form>
-                <el-button type="primary" round style="width: 150px;" @click="login">登录</el-button>
+                <el-button type="primary" round style="width:150px; text-align:center; margin:5px 0px;" @click="login">登录</el-button>
             </div>
         </div>
         <div class="bg1"></div>
@@ -49,8 +49,7 @@ export default {
                 }
                 this.setStaffInfo(staffInfo)
                 sessionStorage.setItem('staffInfo', JSON.stringify(staffInfo))
-                // this.$router.push(`/${res.data.type}`)
-                this.$router.push('/file')
+                this.$router.push(`/${res.data.type}`)
             })
             .catch(err => {
                 console.log(err)
@@ -81,10 +80,12 @@ export default {
         width: 80%;
         float: right;
         padding: 50px;
+        padding-bottom: 30px;
         padding-top: 30px;
         color: rgb(255, 255, 255);
         background-color: rgba(255, 255, 255, .5);
         color: black;
+        text-align: center;
     }
     .login_input .el-input__inner {
         border-radius: 30px;
