@@ -7,15 +7,15 @@
             <i class="el-icon-delete"></i>
         <el-dropdown>
         <p>
-            <img class="person" alt="person" src="../superUser/picture/person.png" style="margin-right: 20px">
+            <!--<img class="person" alt="person" src="../picture/person.png" style="margin-right: 20px">-->
             {{name}},吃了没
         </p>
 
         <el-dropdown-menu slot="dropdown">
-            <router-link to="/P_center">
+            <router-link to="/manager/P_center">
                 <el-dropdown-item>个人中心</el-dropdown-item>
             </router-link>
-            <router-link to="/password">
+            <router-link to="/manager/password">
           <el-dropdown-item>修改密码</el-dropdown-item>
           </router-link>
           <router-link to='/'>
@@ -66,10 +66,6 @@ export default{
     background-color: #B3C0D1;
     line-height: 50px;
     width: 89.4%;
-}
-.el-button{
-    margin-top: -10px;
-    text-align: left;
 }
 .el-aside {
     color: #333;
