@@ -77,7 +77,7 @@
 </template>
 
 <script type="module">
-import Header from '../header'
+import Header from '../commons/header.vue'
 
 export default {
   components: {

@@ -7,7 +7,7 @@
             <i class="el-icon-delete"></i>
         <el-dropdown>
         <p>
-            <img class="person" alt="person" src="./superUser/picture/person.png" style="margin-right: 20px">
+            <img class="person" alt="person" src="../superUser/picture/person.png" style="margin-right: 20px">
             {{name}},吃了没
         </p>
 

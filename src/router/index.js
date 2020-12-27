@@ -2,8 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import 'element-ui/lib/theme-chalk/index.css'
 import Login from '../components/login.vue'
-// import File from '../components/file.vue'
-// import UploadFile from '../components/uploadFile.vue'
+
 import Employee from '../components/employee/employee.vue'
 import FrontDesk from '../components/frontDesk/frontDesk.vue'
 import Manager from '../components/manager/manager.vue'
@@ -23,8 +22,8 @@ import Client from '../components/superUser/projrct/client .vue'
 
 import Salary from '../components/superUser/salary/S_information.vue'
 
-import Center from '../components/P_center.vue'
-import Password from '../components/password.vue'
+import PCenter from '../components/commons/P_center.vue'
+import Password from '../components/commons/password.vue'
 
 Vue.use(Router)
 
@@ -84,7 +83,7 @@ export default new Router({
         component: Home
         }, {
         path: '/P_center',
-        component: Center
+        component: PCenter
         }, {
         path: '/password',
         component: Password
