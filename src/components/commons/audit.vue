@@ -1,5 +1,15 @@
 <template>
     <div>
+   <div class="demo-image">
+   <div class="block" v-for="fit in fits" :key="fit">
+   <span class="demonstration">{{ fit }}</span>
+    <el-image
+      style="width: 100px; height: 100px"
+      :src="url"
+      :fit="fit"></el-image>
+  </div>
+</div>
+
         <el-table :data="auditInfo" style="width: 100%" border :height="height?height:250">
             <el-table-column prop="commitDate" label="日期" width="180" sortable></el-table-column>
             <el-table-column prop="staffInfo.staffName" label="姓名" width="180"></el-table-column>

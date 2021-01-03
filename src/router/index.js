@@ -23,6 +23,7 @@ import Client from '../components/superUser/projrct/client .vue'
 import Salary from '../components/superUser/salary/S_information.vue'
 
 import File from '../components/commons/file.vue'
+
 import ManagerMain from '../components/manager/managerMain.vue'
 import Manager from '../components/manager/manage.vue'
 import teamWokers from '../components/manager/teamworkermanagement.vue'
@@ -42,8 +43,15 @@ import AddClient from '../components/frontDesk/AddClient.vue'
 import modifyStaff from '../components/frontDesk/modifyStaff.vue'
 import ModifyClient from '../components/frontDesk/ModifyClient.vue'
 
-Vue.use(Router)
+import Client from '../components/employee/client.vue'
+import FinishedPro from '../components/employee/FinishedPro.vue'
+import PresentPro from '../components/employee/PresentPro.vue'
+import Audit from '../components/commons/audit.vue'
+import Personal from '../components/employee/P_center.vue'
+import Password from '../components/employee/password.vue'
+import Homepage from '../components/employee/homepage.vue'
 
+Vue.use(Router)
 export default new Router({
   routes: [
     {
@@ -52,7 +60,42 @@ export default new Router({
     },
     {
       path: '/employee',
-      component: Employee
+      component: Employee,
+      redirect: '/employee/present',
+      children: [
+        {
+          path: '/employee/client',
+          component: Client
+        },
+        {
+          path: '/employee/finished',
+          component: FinishedPro
+        },
+        {
+          path: '/employee/present',
+          component: PresentPro
+        },
+        {
+          path: '/employee/audit',
+          component: Audit
+        },
+        {
+          path: '/employee/file',
+          component: File
+        },
+        {
+          path: '/personal',
+          component: Personal
+        },
+        {
+          path: '/password',
+          component: Password
+        },
+        {
+          path: '/employee/homepage',
+          component: Homepage
+        }
+      ]
     },
     {
       path: '/frontDesk',
