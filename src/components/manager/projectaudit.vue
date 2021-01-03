@@ -1,11 +1,11 @@
 <template>
-  <div><audit></audit></div>
+  <div><managerAudit/></div>
 </template>
 
 <script>
-import audit from '../commons/audit.vue'
+import managerAudit from '../commons/managerAudit.vue'
 export default {
-  components: { audit },
+  components: { managerAudit },
     data () {
         return {
 
