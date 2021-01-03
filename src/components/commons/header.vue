@@ -7,18 +7,6 @@
             <i class="el-icon-delete"></i>
         <el-dropdown>
         <p>
-<<<<<<< HEAD
-            <!--<img class="person" alt="person" src="../picture/person.png" style="margin-right: 20px">-->
-            {{name}},吃了没
-        </p>
-
-        <el-dropdown-menu slot="dropdown">
-            <router-link to="/manager/P_center">
-                <el-dropdown-item>个人中心</el-dropdown-item>
-            </router-link>
-            <router-link to="/manager/password">
-          <el-dropdown-item>修改密码</el-dropdown-item>
-=======
             <img class="person" alt="person" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=283427131,243568821&fm=26&gp=0.jpg" style="margin-right: 20px">
             {{name}}
         </p>
@@ -29,7 +17,6 @@
             </router-link>
             <router-link to="/password"> 
           <el-dropdown-item >修改密码</el-dropdown-item>
->>>>>>> cfb38b6a8161973b01fb802b9d7398a79057b5d5
           </router-link>
           <router-link to='/'>
           <el-dropdown-item>注销</el-dropdown-item>
@@ -44,11 +31,7 @@
 export default{
   data () {
     return {
-<<<<<<< HEAD
       name: '老王',
-=======
-      name: '',
->>>>>>> cfb38b6a8161973b01fb802b9d7398a79057b5d5
       time: '',
       date: ''
     }

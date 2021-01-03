@@ -18,7 +18,7 @@ import State from '../components/superUser/employee/state.vue'
 import Project from '../components/superUser/projrct/P_information.vue'
 import Stage from '../components/superUser/projrct/P_stage.vue'
 import Journal from '../components/superUser/projrct/P_journal.vue'
-import Client from '../components/superUser/projrct/client .vue'
+import Client from '../components/superUser/projrct/client.vue'
 
 import Salary from '../components/superUser/salary/S_information.vue'
 
@@ -43,12 +43,11 @@ import AddClient from '../components/frontDesk/AddClient.vue'
 import modifyStaff from '../components/frontDesk/modifyStaff.vue'
 import ModifyClient from '../components/frontDesk/ModifyClient.vue'
 
-import Client from '../components/employee/client.vue'
+import EClient from '../components/employee/client.vue'
 import FinishedPro from '../components/employee/FinishedPro.vue'
 import PresentPro from '../components/employee/PresentPro.vue'
 import Audit from '../components/commons/audit.vue'
 import Personal from '../components/employee/P_center.vue'
-import Password from '../components/employee/password.vue'
 import Homepage from '../components/employee/homepage.vue'
 
 Vue.use(Router)
@@ -65,7 +64,7 @@ export default new Router({
       children: [
         {
           path: '/employee/client',
-          component: Client
+          component: EClient
         },
         {
           path: '/employee/finished',

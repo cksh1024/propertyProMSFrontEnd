@@ -37,7 +37,7 @@
           <el-menu-item index="2-4">文件下载</el-menu-item>
           </router-link>
           <router-link to="/employee/client">
-            <el-menu-item index="2-4">客户信息</el-menu-item>
+            <el-menu-item index="2-5">客户信息</el-menu-item>
           </router-link>
         </el-menu-item-group>
       </el-submenu>
