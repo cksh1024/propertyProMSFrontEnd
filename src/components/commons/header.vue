@@ -67,13 +67,6 @@ export default{
     line-height: 50px;
     width: 89.4%;
 }
-<<<<<<< HEAD
-=======
-.el-button{
-    margin-top: -10px;
-    text-align: left;
-}
->>>>>>> cfb38b6a8161973b01fb802b9d7398a79057b5d5
 .el-aside {
     color: #333;
 }
