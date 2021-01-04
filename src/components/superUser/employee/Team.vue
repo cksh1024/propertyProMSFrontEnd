@@ -25,7 +25,7 @@
       prop="user_name"
       label="主管姓名">
     </el-table-column>
-  </el-table>  
+  </el-table>
 
   <el-dialog title="添加团队" :visible.sync="dialogFormVisible" >
   <el-form :model="form">
