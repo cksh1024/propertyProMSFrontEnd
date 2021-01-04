@@ -1,6 +1,10 @@
 <template>
 <div>
     <h2>当月员工评级</h2>
+    <el-button type="primary" round>修改当月评级</el-button>
+    <router-link to='/E_hismonitor'>
+    <el-button type="primary" round>查看往月评级</el-button>
+    </router-link>
     <el-row :gutter="20">
       <el-col
       :span="3"
@@ -23,6 +27,7 @@
         </el-card>
       </el-col>
     </el-row>
+    
 </div>
 </template>
 

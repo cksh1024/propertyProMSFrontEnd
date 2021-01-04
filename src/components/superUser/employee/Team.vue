@@ -19,6 +19,9 @@
     <el-table-column
       prop="team_type"
       label="团队类型"
+      :filters="[{ text: '建模团队', value: '建模团队' }, { text: '渲染团队', value: '渲染团队' },{ text: '后期团队', value: '后期团队' }]"
+      :filter-method="filterTag"
+      filter-placement="bottom-end"
       width="300">
     </el-table-column>
     <el-table-column
@@ -98,8 +101,24 @@ export default {
           team_type: this.form.type
         })
       }
+    },
+    resetDateFilter () {
+        this.$refs.filterTable.clearFilter('date')
+      },
+      clearFilter () {
+        this.$refs.filterTable.clearFilter()
+      },
+      formatter (row, column) {
+        return row.address
+      },
+      filterTag (value, row) {
+        return row.team_type === value
+      },
+      filterHandler (value, row, column) {
+        const property = column['property']
+        return row[property] === value
+      }
     }
-  }
 }
 </script>
 

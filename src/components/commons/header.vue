@@ -1,14 +1,11 @@
 <template>
-    <el-header style="text-align: right; font-size: 1px ; height: 80px">
+    <el-header style="text-align: right; font-size: 1px ; height: 80px;width:100%;">
            <span class="time">{{ date }}</span>
             <i class="el-icon-s-comment"></i>
-            <i class="el-icon-edit"></i>
-            <i class="el-icon-share"></i>
-            <i class="el-icon-delete"></i>
         <el-dropdown>
         <p>
-            <!--<img class="person" alt="person" src="../picture/person.png" style="margin-right: 20px">-->
-            {{name}},吃了没
+            <img class="person" alt="person" src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" style="margin-right: 20px">
+            {{name}}
         </p>
 
         <el-dropdown-menu slot="dropdown">

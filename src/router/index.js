@@ -14,6 +14,7 @@ import EmployeeInfo from '../components/superUser/employee/E_information.vue'
 import Team from '../components/superUser/employee/Team.vue'
 import Monitor from '../components/superUser/employee/Monitor.vue'
 import State from '../components/superUser/employee/state.vue'
+import hisMonitor from '../components/superUser/employee/hisMonitor.vue'
 
 import Project from '../components/superUser/projrct/P_information.vue'
 import Stage from '../components/superUser/projrct/P_stage.vue'
@@ -112,6 +113,9 @@ export default new Router({
         }, {
         path: '/E_monitor',
         component: Monitor
+        }, {
+        path: '/E_hismonitor',
+        component: hisMonitor
         }, {
         path: '/E_state',
         component: State
