@@ -12,7 +12,7 @@
             <div id="cycle" :style="{backgroundColor:car.card_cycle_back_color}">{{car.card_cycle}}</div>
           </div>
           <div>
-            <h1 style="font-size:150%;color:#909399">{{car.vist_num}}</h1>
+            <h1 style="font-size:150%;color:#909399">{{car.vistNum}}</h1>
             <br />
             <p style="float:left;color:#909399">{{car.bottom_title}}</p>
             <p style="float:right;color:#909399">
@@ -33,7 +33,7 @@
       style="margin-top: 10px">
         <el-card shadow="hover">
           <div slot="header" align="center">
-            {{item.user_name}}
+            {{item.userName}}
           </div>
           <div align="center">
             <el-switch
@@ -56,8 +56,8 @@ export default {
   data () {
     return {
       staff_state: [{
-        user_id: 2020001,
-        user_name: '史蒂夫',
+        userId: 2020001,
+        userName: '史蒂夫',
         value: 2
       }],
       web_card_data: [{
@@ -66,7 +66,7 @@ export default {
         card_cycle: '位',
         card_cycle_back_color: 'green',
         bottom_title: '总人数',
-        vist_num: 20,
+        vistNum: 20,
         vist_all_icon: 'el-icon-user-solid'
         }, {
         card_title_icon: 'el-icon-user',
@@ -74,7 +74,7 @@ export default {
         card_cycle: '位',
         card_cycle_back_color: 'red',
         bottom_title: '总人数',
-        vist_num: 1,
+        vistNum: 1,
         vist_all_icon: 'el-icon-user'
         }]
     }

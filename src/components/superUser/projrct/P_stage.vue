@@ -1,40 +1,40 @@
 <template>
   <el-table
-    :data="pro_stage"
+    :data="proStage"
     stript
     style="width=100%">
     <el-table-column
-      prop="pro_id"
+      prop="proId"
       label="项目id"
       width="200">
     </el-table-column>
     <el-table-column
-      prop="pro_name"
+      prop="proName"
       label="项目名称"
       width="200">
     </el-table-column>
     <el-table-column
-      prop="stage_type"
+      prop="stageType"
       label="项目阶段"
       width="200">
     </el-table-column>
     <el-table-column
-      prop="stage_statime"
+      prop="stageStatime"
       label="阶段开始时间"
       width="200">
     </el-table-column>
     <el-table-column
-      prop="stage_condition"
+      prop="stageCondition"
       label="阶段情况"
       width="200">
     </el-table-column>
     <el-table-column
-      prop="stage_endtime"
+      prop="stageEndtime"
       label="阶段结束时间"
       width="200">
     </el-table-column>
     <el-table-column
-      prop="stage_pay"
+      prop="stagePay"
       label="阶段奖金"
       width="200">
     </el-table-column>
@@ -50,14 +50,14 @@
 export default {
   data () {
     return {
-      pro_stage: [{
-        pro_id: 2020001,
-        pro_name: '上海汤臣一品',
-        stage_type: '建模阶段',
-        stage_statime: '2000-01-01',
-        stage_condition: '未完成',
-        stage_endtime: '',
-        stage_pay: '2000'
+      proStage: [{
+        proId: 2020001,
+        proName: '上海汤臣一品',
+        stageType: '建模阶段',
+        stageStatime: '2000-01-01',
+        stageCondition: '未完成',
+        stageEndtime: '',
+        stagePay: '2000'
       }]
     }
   },

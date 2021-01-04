@@ -14,6 +14,7 @@ import EmployeeInfo from '../components/superUser/employee/E_information.vue'
 import Team from '../components/superUser/employee/Team.vue'
 import Monitor from '../components/superUser/employee/Monitor.vue'
 import State from '../components/superUser/employee/state.vue'
+import hisMonitor from '../components/superUser/employee/hisMonitor.vue'
 
 import Project from '../components/superUser/projrct/P_information.vue'
 import Stage from '../components/superUser/projrct/P_stage.vue'
@@ -21,6 +22,7 @@ import Journal from '../components/superUser/projrct/P_journal.vue'
 import Client from '../components/superUser/projrct/client.vue'
 
 import Salary from '../components/superUser/salary/S_information.vue'
+import Hissalary from '../components/superUser/salary/his_salary.vue'
 
 import File from '../components/commons/file.vue'
 
@@ -189,6 +191,9 @@ export default new Router({
         path: '/E_monitor',
         component: Monitor
         }, {
+        path: '/E_hismonitor',
+        component: hisMonitor
+        }, {
         path: '/E_state',
         component: State
         }, {
@@ -206,6 +211,9 @@ export default new Router({
         }, {
         path: '/S_information',
         component: Salary
+        }, {
+        path: '/his_salary',
+        component: Hissalary
         }, {
         path: '/main',
         component: Home

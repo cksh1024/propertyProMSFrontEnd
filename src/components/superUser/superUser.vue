@@ -7,7 +7,7 @@
       text-color="#fff"
       active-text-color="#ffd04b">
       <div class = "logo">
-        <img alt="logo" src="./picture/logo1.png" class="logo">
+        <img alt="logo" src="./picture/logo.png" class="logo">
       </div>
 
       <router-link to="/main">
@@ -67,10 +67,12 @@
         </template>
       </el-menu-item>
       </router-link>
-
   </el-menu>
-      <Header/>
-  <div class="box">
+  
+  <div class="box1">
+    <Header/>
+  </div>
+  <div class="box2">
     <router-view></router-view>
   </div>
 </el-container>
@@ -96,7 +98,8 @@ export default {
 }
 
 .logo{
-  width: 200px;
+  width: 120px;
+  margin: auto;
 }
 
 a {
@@ -107,7 +110,14 @@ a {
   text-decoration: none;
 }
 
-.box{
+.box1{
+  position: absolute;
+  left:200px;
+  color: #000;
+  width: 1700px;
+}
+
+.box2{
     position: absolute;
     padding: 50px 50px;
     margin: 80px 200px;

@@ -7,37 +7,37 @@
     stripe
     style="width: 100%">
     <el-table-column
-      prop="jour_time"
+      prop="jourTime"
       label="操作时间"
       width="200">
     </el-table-column>
     <el-table-column
-      prop="user_id"
+      prop="userId"
       label="员工编号"
       width="200">
     </el-table-column>
     <el-table-column
-      prop="user_name"
+      prop="userName"
       label="员工姓名"
       width="200">
     </el-table-column>
     <el-table-column
-      prop="pro_id"
+      prop="proId"
       label="项目编号"
       width="200">
     </el-table-column>
     <el-table-column
-      prop="pro_name"
+      prop="proName"
       label="项目名称"
       width="200">
     </el-table-column>
     <el-table-column
-      prop="jour_remark"
+      prop="jourRemark"
       label="操作类型"
       width="200">
     </el-table-column>
     <el-table-column
-      prop="file_name"
+      prop="fileName"
       label="操作文件名">
     </el-table-column>
   </el-table>
