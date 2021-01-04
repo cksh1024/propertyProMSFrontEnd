@@ -8,12 +8,12 @@
     <el-row :gutter="20">
       <el-col
       :span="3"
-      v-for="(item, index) in staff_evaluate"
+      v-for="(item, index) in staffEvaluate"
       :key="index"
       style="margin-top: 10px">
         <el-card shadow="hover">
           <div slot="header" align="center">
-            {{item.user_name}}
+            {{item.userName}}
           </div>
           <div align="center">
             <div class="block">
@@ -35,15 +35,15 @@
 export default {
   data () {
     return {
-      staff_evaluate: [{
-        user_id: 2020001,
-        user_name: '史蒂夫',
+      staffEvaluate: [{
+        userId: 2020001,
+        userName: '史蒂夫',
         value: 5,
         colors: ['#99A9BF', '#F7BA2A', '#FF9900']
       },
       {
-        user_id: 2020002,
-        user_name: '王小美',
+        userId: 2020002,
+        userName: '王小美',
         value: 3,
         colors: ['#99A9BF', '#F7BA2A', '#FF9900']
       }],

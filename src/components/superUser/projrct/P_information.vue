@@ -5,31 +5,31 @@
     stripe
     style="width: 100%">
     <el-table-column
-      prop="pro_id"
+      prop="proId"
       label="项目编号"
       width="180">
     </el-table-column>
 
     <el-table-column
-      prop="pro_name"
+      prop="proName"
       label="项目名称"
       width="180">
     </el-table-column>
 
     <el-table-column
-      prop="cus_name"
+      prop="cusName"
       label="项目客户"
       width="180">
     </el-table-column>
 
     <el-table-column
-      prop="pro_create"
+      prop="proCreate"
       label="项目开始时间"
       width="180">
     </el-table-column>
 
     <el-table-column
-      prop="pro_condition"
+      prop="proCondition"
       label="项目状态"
       width="750">
         <el-steps :space="200" :active=tableData.pro_condition_number finish-status="success">
@@ -54,35 +54,35 @@ export default{
   data () {
     return {
       tableData: [{
-        pro_id: 10001,
-        pro_name: '上海汤臣一品',
-        cus_id: 1001,
-        cus_name: '马云',
-        pro_create: '2000-01-01',
-        pro_condition: '建模中',
-        pro_condition_number: 1,
-        pro_endtime: null
+        proId: 10001,
+        proName: '上海汤臣一品',
+        cusId: 1001,
+        cusName: '马云',
+        proCreate: '2000-01-01',
+        proCondition: '建模中',
+        proCondition_number: 1,
+        proEndtime: null
       }, {
-        pro_id: 10002,
-        pro_name: '重庆交通大学',
-        cus_id: 1002,
-        cus_name: '马化腾',
-        pro_create: '2020-01-01',
-        pro_condition: '渲染中',
-        pro_condition_number: 2,
-        pro_endtime: null
+        proId: 10002,
+        proName: '重庆交通大学',
+        cusId: 1002,
+        cusName: '马化腾',
+        proCreate: '2020-01-01',
+        proCondition: '渲染中',
+        proCondition_number: 2,
+        proEndtime: null
       }]
     }
   },
   methods: {
     handlequery () {
-      this.$alert('<a>项目编号:</a>' + this.tableData[0].pro_id + '<div></div>' +
-      '<a>项目名称:</a>' + this.tableData[0].pro_name + '<div></div>' +
-      '<a>客户编号:</a>' + this.tableData[0].cus_id + '<div></div>' +
-      '<a>客户姓名:</a>' + this.tableData[0].cus_name + '<div></div>' +
-      '<a>项目开始时间：</a>' + this.tableData[0].pro_create + '<div></div>' +
-      '<a>项目状态：</a>' + this.tableData[0].pro_condition + '<div></div>' +
-      '<a>项目结束时间：</a>' + this.tableData[0].pro_endtime + '<div></div>',
+      this.$alert('<a>项目编号:</a>' + this.tableData[0].proId + '<div></div>' +
+      '<a>项目名称:</a>' + this.tableData[0].proName + '<div></div>' +
+      '<a>客户编号:</a>' + this.tableData[0].cusId + '<div></div>' +
+      '<a>客户姓名:</a>' + this.tableData[0].cusName + '<div></div>' +
+      '<a>项目开始时间：</a>' + this.tableData[0].proCreate + '<div></div>' +
+      '<a>项目状态：</a>' + this.tableData[0].proCondition + '<div></div>' +
+      '<a>项目结束时间：</a>' + this.tableData[0].proEndtime + '<div></div>',
       '项目详细信息', {
         dangerouslyUseHTMLString: true
       })

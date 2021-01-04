@@ -9,17 +9,17 @@
     stripe
     style="width: 100%">
     <el-table-column
-      prop="user_id"
+      prop="userId"
       label="员工编号"
       width="200">
     </el-table-column>
     <el-table-column
-      prop="user_name"
+      prop="userName"
       label="员工姓名"
       width="200">
     </el-table-column>
     <el-table-column
-      prop="grade_time"
+      prop="gradeTime"
       label="评级日期"
       :filters="[{ text: '2020-1-31', value: '2020-1-31' }, { text: '2020-2-29', value: '2020-2-29' },{ text: '2020-3-1', value: '2020-3-1' }
       ,{ text: '2020-4-1', value: '2020-4-1' },{ text: '2020-5-1', value: '2020-5-1' },{ text: '2020-6-1', value: '2020-6-1' },{ text: '2020-7-1', value: '2020-7-1' }
@@ -30,7 +30,7 @@
       width="200">
     </el-table-column>
     <el-table-column
-      prop="grade_level"
+      prop="gradeLevel"
       label="评级等级">
     </el-table-column>
   </el-table>
@@ -42,10 +42,10 @@ export default {
   data () {
     return {
       grade: [{
-          user_id: 2020001,
-          user_name: '史蒂夫',
-          grade_time: '2020-1-1',
-          grade_level: 5
+          userId: 2020001,
+          userName: '史蒂夫',
+          gradeTime: '2020-1-1',
+          gradeLevel: 5
       }]
     }
 }

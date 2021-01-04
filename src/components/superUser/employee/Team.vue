@@ -7,17 +7,17 @@
     height="750"
     style="width: 100%">
     <el-table-column
-      prop="team_id"
+      prop="teamId"
       label="团队ID"
       width="300">
     </el-table-column>
     <el-table-column
-      prop="team_name"
+      prop="teamName"
       label="团队名称"
       width="300">
     </el-table-column>
     <el-table-column
-      prop="team_type"
+      prop="teamType"
       label="团队类型"
       :filters="[{ text: '建模团队', value: '建模团队' }, { text: '渲染团队', value: '渲染团队' },{ text: '后期团队', value: '后期团队' }]"
       :filter-method="filterTag"
@@ -25,7 +25,7 @@
       width="300">
     </el-table-column>
     <el-table-column
-      prop="user_name"
+      prop="userName"
       label="主管姓名">
     </el-table-column>
   </el-table>  
@@ -45,6 +45,9 @@
         <el-option label="后期团队" value="后期团队"></el-option>
       </el-select>
     </el-form-item>
+    <el-form-item label="主管编号" :label-width="formLabelWidth">
+      <el-input v-model="form.staid" autocomplete="off"></el-input>
+    </el-form-item>
   </el-form>
   <div slot="footer" class="dialog-footer">
     <el-button @click="dialogFormVisible = false">取 消</el-button>
@@ -60,20 +63,20 @@ export default {
   data () {
     return {
       team: [{
-        team_id: 201,
-        team_name: '团队1',
-        team_type: '建模团队',
-        user_name: '王伟'
+        teamId: 201,
+        teamName: '团队1',
+        teamType: '建模团队',
+        userName: '王伟'
       }, {
-        team_id: 202,
-        team_name: '团队2',
-        team_type: '渲染团队',
-        user_name: '张三'
+        teamId: 202,
+        teamName: '团队2',
+        teamType: '渲染团队',
+        userName: '张三'
       }, {
-        team_id: 203,
-        team_name: '团队3',
-        team_type: '后期团队',
-        user_name: '李四'
+        teamId: 203,
+        teamName: '团队3',
+        teamType: '后期团队',
+        userName: '李四'
       }],
       dialogFormVisible: false,
       form: {
@@ -96,9 +99,9 @@ export default {
         this.$message('信息未完善')
       } else {
         this.team.push({
-          team_id: this.form.id,
-          team_name: this.form.name,
-          team_type: this.form.type
+          teamId: this.form.id,
+          teamName: this.form.name,
+          teamType: this.form.type
         })
       }
     },
@@ -112,7 +115,7 @@ export default {
         return row.address
       },
       filterTag (value, row) {
-        return row.team_type === value
+        return row.teamType === value
       },
       filterHandler (value, row, column) {
         const property = column['property']

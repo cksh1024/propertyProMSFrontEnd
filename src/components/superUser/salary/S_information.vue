@@ -1,56 +1,61 @@
 <template>
-     <el-table
+<div>
+  <router-link to="/his_salary">
+  <el-button type="primary" round>查看往月工资</el-button>
+  </router-link>
+  <el-table
     :data="tableData"
     style="width: 100%">
     <el-table-column type="expand">
       <template slot-scope="props">
         <el-form label-position="left" inline class="demo-table-expand">
           <el-form-item label="员工编号">
-            <span>{{ props.row.user_ID }}</span>
+            <span>{{ props.row.userID }}</span>
           </el-form-item>
           <el-form-item label="员工姓名">
-            <span>{{ props.row.user_name }}</span>
+            <span>{{ props.row.userName }}</span>
           </el-form-item>
           <el-form-item label="发放时间">
-            <span>{{ props.row.salary_time }}</span>
+            <span>{{ props.row.salaryTime }}</span>
           </el-form-item>
           <el-form-item label="基本工资">
-            <span>{{ props.row.status_salary }}</span>
+            <span>{{ props.row.statusSalary }}</span>
           </el-form-item>
           <el-form-item label="上班天数">
-            <span>{{ props.row.salary_days }}</span>
+            <span>{{ props.row.salaryDays }}</span>
           </el-form-item>
           <el-form-item label="全勤奖奖金">
-            <span>{{ props.row.salary_bonus }}</span>
+            <span>{{ props.row.salaryBonus }}</span>
           </el-form-item>
           <el-form-item label="绩效奖金">
-            <span>{{ props.row.salary_all }}</span>
+            <span>{{ props.row.salaryAll }}</span>
           </el-form-item>
           <el-form-item label="个人奖金">
-            <span>{{ props.row.salary_personal }}</span>
+            <span>{{ props.row.salaryPersonal }}</span>
           </el-form-item>
           <el-form-item label="税额">
-            <span>{{ props.row.salary_tax }}</span>
+            <span>{{ props.row.salaryTax }}</span>
           </el-form-item>
           <el-form-item label="总发放工资">
-            <span>{{ props.row.salary_practical }}</span>
+            <span>{{ props.row.salaryPractical }}</span>
           </el-form-item>
         </el-form>
       </template>
     </el-table-column>
     <el-table-column
       label="员工姓名"
-      prop="user_name">
+      prop="userName">
     </el-table-column>
     <el-table-column
       label="工资发放时间"
-      prop="salary_time">
+      prop="salaryTime">
     </el-table-column>
     <el-table-column
       label="发放工资"
-      prop="salary_practical">
+      prop="salaryPractical">
     </el-table-column>
   </el-table>
+  </div>
 </template>
 
 <script>
@@ -58,16 +63,16 @@ export default{
   data () {
     return {
       tableData: [{
-        user_ID: 2020001,
-        user_name: '小王',
-        salary_time: '2020-12-10',
-        status_salary: 6000,
-        salary_practical: 6000,
-        salary_days: 20,
-        salary_bonus: 1000,
-        salary_all: 50,
-        salary_tax: 100,
-        salary_personal: 1000
+        userID: 2020001,
+        userName: '小王',
+        salaryTime: '2020-12-10',
+        statusSalary: 6000,
+        salaryPractical: 6000,
+        salaryDays: 20,
+        salaryBonus: 1000,
+        salaryAll: 50,
+        salaryTax: 100,
+        salaryPersonal: 1000
       }]
     }
   }

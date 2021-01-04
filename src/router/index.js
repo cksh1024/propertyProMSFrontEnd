@@ -22,6 +22,7 @@ import Journal from '../components/superUser/projrct/P_journal.vue'
 import Client from '../components/superUser/projrct/client .vue'
 
 import Salary from '../components/superUser/salary/S_information.vue'
+import Hissalary from '../components/superUser/salary/his_salary.vue'
 
 import File from '../components/commons/file.vue'
 import ManagerMain from '../components/manager/managerMain.vue'
@@ -134,6 +135,9 @@ export default new Router({
         }, {
         path: '/S_information',
         component: Salary
+        }, {
+        path: '/his_salary',
+        component: Hissalary
         }, {
         path: '/main',
         component: Home
