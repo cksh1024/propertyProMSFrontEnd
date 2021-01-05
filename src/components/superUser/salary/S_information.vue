@@ -54,11 +54,18 @@
       label="发放工资"
       prop="salaryPractical">
     </el-table-column>
+    <el-table-column
+      label="操作">
+      <template slot-scope="scope">
+        <el-button type="warning" @click="setSalary(scope.row)">确认</el-button>
+      </template>
+    </el-table-column>
   </el-table>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default{
   data () {
     return {
@@ -75,12 +82,50 @@ export default{
         salaryPersonal: 1000
       }]
     }
+  },
+  methods: {
+    setSalary (row) {
+      let params = new FormData()
+      params.append('staffId', row.userID)
+      params.append('salaryTime', row.salaryTime)
+      params.append('salaryDays', row.salaryDays)
+      params.append('salaryPractical', row.salaryPractical)
+      params.append('salaryBonus', row.salaryBonus)
+      params.append('salaryAll', row.salaryAll)
+      params.append('salaryTax', row.salaryTax)
+      params.append('salaryPersonal', row.salaryPersonal)
+      axios.post('lclgl/setSalaryInfo', params)
+      .then(res => {
+        if (res.status === -1) {
+          return this.$message.error('修改失败！')
+        }
+        this.$message({
+            message: '修改成功！',
+            type: 'success'
+        })
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    },
+    getSalaryInfo () {
+      axios.post('lclgl/getSalaryInfo')
+      .then(res => {
+        this.tableData = res.data.salaryInfo
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+  },
+  mounted () {
+    this.getSalaryInfo()
   }
 }
 </script>
 
 <style>
-.demo-table-expand {
+  .demo-table-expand {
     font-size: 0;
   }
   .demo-table-expand label {

@@ -25,28 +25,25 @@
       width="300">
     </el-table-column>
     <el-table-column
-      prop="userName"
+      prop="teamManagers"
       label="主管姓名">
     </el-table-column>
   </el-table>
 
   <el-dialog title="添加团队" :visible.sync="dialogFormVisible" >
-  <el-form :model="form">
-    <el-form-item label="团队ID" :label-width="formLabelWidth">
-      <el-input v-model="form.id" autocomplete="off"></el-input>
-    </el-form-item>
+  <el-form>
     <el-form-item label="团队名称" :label-width="formLabelWidth">
-      <el-input v-model="form.name" autocomplete="off"></el-input>
+      <el-input v-model="teamName" autocomplete="off"></el-input>
     </el-form-item>
     <el-form-item label="团队类型" :label-width="formLabelWidth">
-      <el-select v-model="form.type" placeholder="选择团队类型">
-        <el-option label="建模团队" value="建模团队"></el-option>
-        <el-option label="渲染团队" value="渲染团队"></el-option>
-        <el-option label="后期团队" value="后期团队"></el-option>
+      <el-select v-model="teamType" placeholder="选择团队类型">
+        <el-option :label="item" :value="item" v-for="item in teamTypes" :key="item"></el-option>
       </el-select>
     </el-form-item>
-    <el-form-item label="主管编号" :label-width="formLabelWidth">
-      <el-input v-model="form.staid" autocomplete="off"></el-input>
+    <el-form-item label="主管" :label-width="formLabelWidth">
+      <el-select v-model="managerId" placeholder="选择主管">
+        <el-option :label="item.staffName" :value="item.userId" v-for="item in managers" :key="item.userId"></el-option>
+      </el-select>
     </el-form-item>
   </el-form>
   <div slot="footer" class="dialog-footer">
@@ -59,69 +56,80 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data () {
     return {
-      team: [{
-        teamId: 201,
-        teamName: '团队1',
-        teamType: '建模团队',
-        userName: '王伟'
-      }, {
-        teamId: 202,
-        teamName: '团队2',
-        teamType: '渲染团队',
-        userName: '张三'
-      }, {
-        teamId: 203,
-        teamName: '团队3',
-        teamType: '后期团队',
-        userName: '李四'
-      }],
+      team: [],
       dialogFormVisible: false,
-      form: {
-        id: '',
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
-      },
-      formLabelWidth: '120px'
+      teamName: '',
+      teamType: '',
+      formLabelWidth: '120px',
+      teamTypes: ['建模团队', '渲染团队', '后期团队'],
+      managers: [],
+      managerId: ''
     }
   },
+  mounted () {
+    this.getTeamInfos()
+  },
   methods: {
+    getTeamInfos () {
+      axios.post('lclgl/getTeamInfos')
+      .then(res => {
+        this.team = res.data.teamInfos
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    },
     addteam () {
-      if (this.form.id === '' || this.form.name === '' || this.form.type === '') {
+      if (this.teamName === '' || this.teamType === '' || this.managerId === '') {
         this.$message('信息未完善')
       } else {
-        this.team.push({
-          teamId: this.form.id,
-          teamName: this.form.name,
-          teamType: this.form.type
+        let params = new FormData()
+        params.append('teamName', this.teamName)
+        params.append('teamType', this.teamType)
+        params.append('managerId', this.managerId)
+        axios.post('lclgl/addTeam', params)
+        .then(res => {
+          this.getTeamInfos()
+        })
+        .catch(err => {
+          console.log(err)
         })
       }
     },
     resetDateFilter () {
-        this.$refs.filterTable.clearFilter('date')
-      },
-      clearFilter () {
-        this.$refs.filterTable.clearFilter()
-      },
-      formatter (row, column) {
-        return row.address
-      },
-      filterTag (value, row) {
-        return row.teamType === value
-      },
-      filterHandler (value, row, column) {
-        const property = column['property']
-        return row[property] === value
-      }
+      this.$refs.filterTable.clearFilter('date')
+    },
+    clearFilter () {
+      this.$refs.filterTable.clearFilter()
+    },
+    formatter (row, column) {
+      return row.address
+    },
+    filterTag (value, row) {
+      return row.teamType === value
+    },
+    filterHandler (value, row, column) {
+      const property = column['property']
+      return row[property] === value
     }
+  },
+  watch: {
+    teamType: function (value) {
+      let params = new FormData()
+      params.append('teamType', value)
+      axios.post('lclgl/getManagersByTeamType', params)
+      .then(res => {
+        this.managers = res.data.managers
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+  }
 }
 </script>
 

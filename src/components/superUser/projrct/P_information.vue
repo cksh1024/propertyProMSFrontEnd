@@ -29,27 +29,21 @@
     </el-table-column>
 
     <el-table-column
-      prop="proCondition"
-      label="项目状态"
-      width="750">
-        <el-steps :space="200" :active=tableData.pro_condition_number finish-status="success">
-        <el-step title="建模阶段"></el-step>
-        <el-step title="渲染阶段"></el-step>
-        <el-step title="后期阶段"></el-step>
-        <el-step title="已完成"></el-step>
-        </el-steps>
-    </el-table-column>
-
-    <el-table-column label="详细信息">
-        <template  slot-scope="scope">
-        <el-button type="primary" round size="mini" @click="handlequery(scope.$index, scope.row)">查看</el-button>
+      label="项目状态">
+        <template slot-scope="scope">
+          <el-steps :space="200" :active='scope.row.proCondition_number' finish-status="success">
+            <el-step title="建模阶段"></el-step>
+            <el-step title="渲染阶段"></el-step>
+            <el-step title="后期阶段"></el-step>
+            <el-step title="已完成"></el-step>
+          </el-steps>
         </template>
     </el-table-column>
-
   </el-table>
 </template>
 
 <script>
+import axios from 'axios'
 export default{
   data () {
     return {
@@ -74,18 +68,33 @@ export default{
       }]
     }
   },
+  mounted () {
+    this.getPros()
+  },
   methods: {
-    handlequery () {
-      this.$alert('<a>项目编号:</a>' + this.tableData[0].proId + '<div></div>' +
-      '<a>项目名称:</a>' + this.tableData[0].proName + '<div></div>' +
-      '<a>客户编号:</a>' + this.tableData[0].cusId + '<div></div>' +
-      '<a>客户姓名:</a>' + this.tableData[0].cusName + '<div></div>' +
-      '<a>项目开始时间：</a>' + this.tableData[0].proCreate + '<div></div>' +
-      '<a>项目状态：</a>' + this.tableData[0].proCondition + '<div></div>' +
-      '<a>项目结束时间：</a>' + this.tableData[0].proEndtime + '<div></div>',
-      '项目详细信息', {
-        dangerouslyUseHTMLString: true
+    getPros () {
+      axios.post('lclgl/getPros')
+      .then(res => {
+        for (let index in res.data.proInfos) {
+          res.data.proInfos[index].proCreate = this.changeDateFormat(res.data.proInfos[index].proCreate)
+          res.data.proInfos[index].proEndtime = this.changeDateFormat(res.data.proInfos[index].proEndtime)
+        }
+        this.tableData = res.data.proInfos
+        console.log(this.tableData)
       })
+      .catch(err => {
+        console.log(err)
+      })
+    },
+    changeDateFormat (cellval) {
+      if (cellval) {
+          var date = new Date(cellval)
+          var month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1
+          var currentDate = date.getDate()
+          currentDate = currentDate < 10 ? '0' + currentDate : currentDate
+          return date.getFullYear() + '-' + month + '-' + currentDate
+      }
+      return cellval
     }
   }
 }

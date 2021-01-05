@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-button>添加员工</el-button>
+    <el-button @click="addStaff">添加员工</el-button>
   <el-row :gutter="20">
     <el-col
       :span="5"
@@ -104,12 +104,7 @@
             <el-form-item label="工作经历">
             <el-input type="textarea" :rows="2" v-model="user.staffJob"></el-input>
           </el-form-item>
-
         </el-form>
-    <span slot="footer" class="dialog-footer">
-      <el-button @click="dialogVisible = false">取 消</el-button>
-      <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
-    </span>
     </el-dialog>
   </el-row>
   </div>
@@ -136,17 +131,22 @@ export default {
     get_staff (row) {
       this.dialogVisible = true
       this.user = row
+    },
+    getStaffs () {
+      axios.post('lclgl/getStaffs')
+      .then(res => {
+        this.staff_info = res.data.staffs
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    },
+    addStaff () {
+      
     }
   },
   mounted () {
-    axios.post('lclgl/getStaffs')
-    .then(res => {
-      this.staff_info = res.data.staffs
-      console.log(this.staff_info)
-    })
-    .catch(err => {
-      console.log(err)
-    })
+    this.getStaffs()
   }
 }
 </script>

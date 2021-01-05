@@ -179,50 +179,50 @@ export default new Router({
       path: '/superUser',
       component: SuperUser,
       children: [{
-        path: '/',
-        component: Home
+          path: '/',
+          component: Home
         }, {
-        path: '/E_information',
-        component: EmployeeInfo
+          path: '/E_information',
+          component: EmployeeInfo
         }, {
-        path: '/E_team',
-        component: Team
+          path: '/E_team',
+          component: Team
         }, {
-        path: '/E_monitor',
-        component: Monitor
+          path: '/E_monitor',
+          component: Monitor
         }, {
-        path: '/E_hismonitor',
-        component: hisMonitor
+          path: '/E_hismonitor',
+          component: hisMonitor
         }, {
-        path: '/E_state',
-        component: State
+          path: '/E_state',
+          component: State
         }, {
-        path: '/P_information',
-        component: Project
+          path: '/P_information',
+          component: Project
         }, {
-        path: '/P_stage',
-        component: Stage
+          path: '/P_stage',
+          component: Stage
         }, {
-        path: '/client',
-        component: Client
+          path: '/client',
+          component: Client
         }, {
-        path: '/P_journal',
-        component: Journal
+          path: '/P_journal',
+          component: Journal
         }, {
-        path: '/S_information',
-        component: Salary
+          path: '/S_information',
+          component: Salary
         }, {
-        path: '/his_salary',
-        component: Hissalary
+          path: '/his_salary',
+          component: Hissalary
         }, {
-        path: '/main',
-        component: Home
+          path: '/main',
+          component: Home
         }, {
-        path: '/P_center',
-        component: PCenter
+          path: '/P_center',
+          component: PCenter
         }, {
-        path: '/password',
-        component: Password
+          path: '/password',
+          component: Password
       }]
     },
     {

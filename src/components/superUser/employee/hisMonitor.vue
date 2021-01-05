@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data () {
     return {
@@ -48,7 +49,24 @@ export default {
           gradeLevel: 5
       }]
     }
-}
+  },
+  methods: {
+    getStaffs () {
+      axios.post('lclgl/getHistoryStaffEvaluate')
+      .then(res => {
+        for (let index in res.data.gradeInfos) {
+          res.data.gradeInfos[index].colors = ['#99A9BF', '#F7BA2A', '#FF9900']
+        }
+        this.grade = res.data.gradeInfos
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+  },
+  mounted () {
+    this.getStaffs()
+  }
 }
 </script>
 

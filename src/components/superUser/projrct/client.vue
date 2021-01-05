@@ -15,8 +15,8 @@
       width="200">
     </el-table-column>
     <el-table-column
-      prop="cusCompany"
-      label="客户公司"
+      prop="cusSex"
+      label="客户性别"
       width="200">
     </el-table-column>
     <el-table-column
