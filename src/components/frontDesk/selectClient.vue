@@ -43,7 +43,7 @@ export default {
     data () {
         return {
             tableData: [],
-            tableHeight: window.innerHeight
+            tableHeight: window.innerHeight * 0.8
         }
     },
     methods: {

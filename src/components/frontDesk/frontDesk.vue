@@ -1,10 +1,12 @@
 <template>
-    <div>
-        <div style="float:left; width:15%;" class="menu">
-            <div class="block"><el-avatar :size="100" :src="circleUrl"></el-avatar></div>
+    <el-container style="height: 100%; border: 1px solid #eee">
+        <div class="menu">
             <el-menu
             default-active="/frontDesk/selectStaff"
             class="el-menu-vertical-demo"
+            background-color="#545c64"
+            text-color="#fff"
+            style="height:100%"
             router>
                 <el-submenu index="1">
                     <template slot="title">
@@ -20,23 +22,31 @@
                         <template slot="title"><i class="el-icon-s-custom"></i><span class="title2">客户</span></template>
                         <el-menu-item index="/frontDesk/selectClient">信息管理</el-menu-item>
                         <el-menu-item index="/frontDesk/addClient">添加</el-menu-item>
-
                     </el-submenu>
                 </el-submenu>
             </el-menu>
         </div>
-        <div style="width:85%; height:100%; margin-left:15%;">
-            <router-view/>
+        <div class="main">
+            <div class="top-bar">
+                <Header/>
+            </div>
+            <div class="mainview">
+                <router-view/>
+            </div>
         </div>
-    </div>
+    </el-container>
 </template>
 
 <script>
+import Header from '../commons/header'
 export default {
     data () {
         return {
             circleUrl: 'https://img3.duitang.com/uploads/item/201604/17/20160417164702_Wr45v.thumb.700_0.jpeg'
         }
+    },
+    components: {
+        Header
     }
 }
 </script>

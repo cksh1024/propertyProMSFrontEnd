@@ -9,12 +9,12 @@
         </p>
 
         <el-dropdown-menu slot="dropdown">
-            <router-link to="/personal">  
+            <router-link :to="'/' + staffInfo.type + '/personal'">  
                 <el-dropdown-item>个人中心</el-dropdown-item>
             </router-link>
-            <router-link to="/password"> 
-          <el-dropdown-item >修改密码</el-dropdown-item>
-          </router-link>
+            <router-link :to="'/' + staffInfo.type + '/password'"> 
+              <el-dropdown-item >修改密码</el-dropdown-item>
+            </router-link>
           <router-link to='/'>
           <el-dropdown-item>注销</el-dropdown-item>
           </router-link>
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default{
   data () {
     return {
@@ -32,6 +33,9 @@ export default{
       time: '',
       date: ''
     }
+  },
+  computed: {
+    ...mapState(['staffInfo'])
   },
   mounted () {
     this.Timer()

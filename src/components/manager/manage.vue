@@ -2,7 +2,7 @@
 <el-container style="height: 920px; border: 1px solid #eee">
   <el-menu
       default-active="1"
-      class="el-menu-vertical-demo"
+      class="el-menu-vertical-demo menu"
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b">
@@ -63,10 +63,16 @@
       </router-link>
 
   </el-menu>
-    <Header/>
-  <div class="box">
-    <router-view/>
+  
+  <div class="main">
+    <div class="top-bar">
+      <Header/>
+    </div>
+    <div class="mainview">
+      <router-view/>
+    </div>
   </div>
+
 </el-container>
 </template>
 
@@ -90,10 +96,6 @@ export default {
 .el-menu-vertical-demo{
     width: 200px;
     height: 100%;
-}
-
-.logo{
-  width: 200px;
 }
 
 a {

@@ -3,7 +3,7 @@
   <el-container style="height: 920px; border: 1px solid #eee">
   <el-menu
       default-active="1"
-      class="el-menu-vertical-demo"
+      class="el-menu-vertical-demo menu"
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b">
@@ -43,15 +43,20 @@
       </el-submenu>
 
   </el-menu>
+  
+  <div class="main">
+    <div class="top-bar">
       <Header/>
-  <div class="box">
-    <router-view></router-view>
+    </div>
+    <div class="mainview">
+      <router-view/>
+    </div>
   </div>
+  
 </el-container>
 </template>
 
 <script >
-// import Header from '../header'
 import Header from '../commons/header'
 export default {
   data () {

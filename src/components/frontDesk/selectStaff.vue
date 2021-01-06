@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div style="height:100%">
         <el-table
         :data="tableData"
         :height="tableHeight"
         border
         style="width: 100%">
-            <el-table-column fixed prop="staffName" label="姓名"  width="150"></el-table-column>
+            <el-table-column fixed prop="staffName" label="姓名"  width="150" style="z-index:1;"></el-table-column>
             <el-table-column
             prop="statusType"
             label="职位">
@@ -70,7 +70,7 @@
                     </el-popconfirm>
                 </template>
             </el-table-column>
-    </el-table>
+        </el-table>
     </div>
 </template>
 
@@ -79,7 +79,7 @@ import axios from 'axios'
 export default {
     data () {
         return {
-            tableHeight: window.innerHeight,
+            tableHeight: window.innerHeight * 0.85,
             tableData: []
         }
     },

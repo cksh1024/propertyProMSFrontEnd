@@ -1,8 +1,8 @@
 <template>
-<el-container style="height: 920px; border: 1px solid #eee">
+<el-container style="height: 100%; border: 1px solid #eee">
   <el-menu
       default-active="1"
-      class="el-menu-vertical-demo"
+      class="el-menu-vertical-demo menu"
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b">
@@ -68,13 +68,16 @@
       </el-menu-item>
       </router-link>
   </el-menu>
-  
-  <div class="box1">
-    <Header/>
+
+  <div class="main">
+    <div class="top-bar">
+      <Header/>
+    </div>
+    <div class="mainview">
+      <router-view/>
+    </div>
   </div>
-  <div class="box2">
-    <router-view></router-view>
-  </div>
+
 </el-container>
 </template>
 
@@ -108,21 +111,5 @@ a {
 
 .router-link-active {
   text-decoration: none;
-}
-
-.box1{
-  position: absolute;
-  left:200px;
-  color: #000;
-  width: 1700px;
-}
-
-.box2{
-    position: absolute;
-    padding: 50px 50px;
-    margin: 80px 200px;
-    color: #000;
-    width: 1600px;
-    height: 740px;
 }
 </style>

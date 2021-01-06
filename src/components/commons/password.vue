@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data () {
     return {
@@ -40,6 +41,22 @@ export default {
       } else if (this.form.new_password !== this.form.new_password_verify) {
         this.$message('两次输入密码不相同')
       }
+      let params = new FormData()
+      params.append('newPwd', this.form.new_password)
+      params.append('oldPwd', this.form.password)
+      axios.post('lclgl/updatePassword', params)
+      .then(res => {
+        if (res.data.status === -1) {
+          return this.$message.error(res.data.msg)
+        }
+        this.$message({
+            message: res.data.msg,
+            type: 'success'
+        })
+      })
+      .catch(err => {
+        console.log(err)
+      })
     }
   }
 }

@@ -35,7 +35,7 @@ import ProjectAudit from '../components/manager/projectaudit.vue'
 import ProjectBack from '../components/manager/projectback.vue'
 import ProjectSwitch from '../components/manager/projectswitch.vue'
 import ManagerInfo from '../components/manager/managerInfo.vue'
-import PCenter from '../components/commons/P_center.vue'
+import Personal from '../components/commons/P_center.vue'
 import Password from '../components/commons/password.vue'
 
 import SelectStaff from '../components/frontDesk/selectStaff.vue'
@@ -49,7 +49,6 @@ import EClient from '../components/employee/client.vue'
 import FinishedPro from '../components/employee/FinishedPro.vue'
 import PresentPro from '../components/employee/PresentPro.vue'
 import Audit from '../components/commons/audit.vue'
-import Personal from '../components/employee/P_center.vue'
 import Homepage from '../components/employee/homepage.vue'
 
 Vue.use(Router)
@@ -95,6 +94,14 @@ export default new Router({
         {
           path: '/employee/homepage',
           component: Homepage
+        },
+        {
+          path: '/employee/password',
+          component: Password
+        },
+        {
+          path: '/employee/personal',
+          component: Personal
         }
       ]
     },
@@ -126,6 +133,14 @@ export default new Router({
         {
           path: '/frontDesk/modifyClient/:id',
           component: ModifyClient
+        },
+        {
+          path: '/frontDesk/password',
+          component: Password
+        },
+        {
+          path: '/frontDesk/personal',
+          component: Personal
         }
       ]
     },
@@ -139,7 +154,7 @@ export default new Router({
         },
         {
           path: '/manager/P_center',
-          component: PCenter
+          component: Personal
         },
         {
           path: '/manager/password',
@@ -172,6 +187,14 @@ export default new Router({
         {
           path: '/manager/Promanagement',
           component: ProManagement
+        },
+        {
+          path: '/manager/password',
+          component: Password
+        },
+        {
+          path: '/manager/personal',
+          component: Personal
         }
       ]
     },
@@ -219,10 +242,13 @@ export default new Router({
           component: Home
         }, {
           path: '/P_center',
-          component: PCenter
+          component: Personal
         }, {
-          path: '/password',
+          path: '/superUser/password',
           component: Password
+        }, {
+          path: '/superUser/personal',
+          component: Personal
       }]
     },
     {
