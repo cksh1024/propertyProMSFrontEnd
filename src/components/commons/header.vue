@@ -4,7 +4,7 @@
             <i class="el-icon-s-comment"></i>
         <el-dropdown>
         <p>
-            <img class="person" alt="person" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=283427131,243568821&fm=26&gp=0.jpg" style="margin-right: 20px">
+            <img class="person" alt="person" :src="staffInfo.avartar" style="margin-right: 20px">
             {{name}}
         </p>
 
@@ -115,5 +115,8 @@ img.person
 .time{
     font-size: 20px;
     padding: 0px 150px 0px 0px;
+}
+a {
+  text-decoration: none;
 }
 </style>

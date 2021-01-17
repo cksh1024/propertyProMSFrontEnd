@@ -51,4 +51,8 @@ html, body{
   top: 0;
   z-index: 2;
 }
+.logo{
+  width: 120px;
+  margin: auto;
+}
 </style>

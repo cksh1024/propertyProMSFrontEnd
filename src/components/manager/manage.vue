@@ -6,8 +6,8 @@
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b">
-      <div class = "logo">
-        <!--<img alt="logo" src="./picture/logo1.png" class="logo">-->
+      <div class="logo">
+        <img alt="logo" src="../../../static/imgs/logo.png" class="logo">
       </div>
 
       <router-link to="/manager">

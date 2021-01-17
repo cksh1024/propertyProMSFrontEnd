@@ -8,6 +8,9 @@
             text-color="#fff"
             style="height:100%"
             router>
+                <div class = "logo">
+                    <img alt="logo" src="../../../static/imgs/logo.png" class="logo">
+                </div>
                 <el-submenu index="1">
                     <template slot="title">
                     <i class="el-icon-price-tag"></i>
@@ -52,7 +55,7 @@ export default {
 </script>
 
 <style>
-.el-submenu__title .title1 {
+/* .el-submenu__title .title1 {
     font-size: 35px;
 }
 .el-submenu__title .title2 {
@@ -63,7 +66,7 @@ export default {
 }
 .el-menu-item-group__title {
     font-size: 20px;
-}
+} */
 .el-avatar>img {
     position: relative;
     left: -19px;

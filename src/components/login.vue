@@ -45,7 +45,8 @@ export default {
                 }
                 let staffInfo = {
                     statusType: res.data.statusType,
-                    type: res.data.type
+                    type: res.data.type,
+                    avartar: res.data.avatar
                 }
                 this.setStaffInfo(staffInfo)
                 sessionStorage.setItem('staffInfo', JSON.stringify(staffInfo))

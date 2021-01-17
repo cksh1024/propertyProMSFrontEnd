@@ -6,7 +6,7 @@
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b">
-      <div class = "logo">
+      <div class="logo">
         <img alt="logo" src="./picture/logo.png" class="logo">
       </div>
 
@@ -98,11 +98,6 @@ export default {
 
 .el-menu-vertical-demo{
     width: 200px;
-}
-
-.logo{
-  width: 120px;
-  margin: auto;
 }
 
 a {
