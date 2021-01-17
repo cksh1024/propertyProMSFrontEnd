@@ -4,12 +4,12 @@
             <el-link v-text="item" class="rootFont fl" @click="skipDir(index)"></el-link><span class="separator fl">/</span>
         </span>
         <p class="overflow-hidden" style="width:100%;"><el-link class="lastDirFont fl" @click="returnLastDir">..</el-link></p>
-        <p v-for="dir in directorys" :key="dir.dirName+dir.id" class="overflow-hidden" @mouseenter="dir.showDelBtn=!dir.showDelBtn" @mouseleave="dir.showDelBtn=!dir.showDelBtn">
+        <p v-for="dir in directorys" :key="dir.dirName+dir.id" class="overflow-hidden fileList" @mouseenter="dir.showDelBtn=!dir.showDelBtn" @mouseleave="dir.showDelBtn=!dir.showDelBtn" style="position:relative;">
             <i class="el-icon-folder fl"></i>
             <el-link v-text="dir.dirName" class="dirFont fl" @click="getFileList(dir.dirName)"></el-link>
-            <el-button type="danger" icon="el-icon-delete" circle v-if="dir.showDelBtn && staffInfo.type==='manager'" @click="open(dir.dirName, 'dir')"></el-button>
+            <el-button type="danger" icon="el-icon-delete" circle v-if="dir.showDelBtn && staffInfo.type==='manager'" @click="open(dir.dirName, 'dir')" class="delBtn"></el-button>
         </p>
-        <p v-for="file in files" :key="file.fileName+file.id" class="overflow-hidden"  @mouseenter="file.showDelBtn=!file.showDelBtn" @mouseleave="file.showDelBtn=!file.showDelBtn">
+        <p v-for="file in files" :key="file.fileName+file.id" class="overflow-hidden fileList" @mouseenter="file.showDelBtn=!file.showDelBtn" @mouseleave="file.showDelBtn=!file.showDelBtn" style="position:relative;">
             <i class="el-icon-document fl"></i>
             <el-link class="dirFont fl" v-text="file.fileName" @click="downLoad(file.fileName)"></el-link>
             <el-button type="danger" icon="el-icon-delete" circle v-if="file.showDelBtn && staffInfo.type==='manager'" @click="open(file.fileName, 'file')"></el-button>
@@ -171,5 +171,24 @@ export default {
         margin-right: 10px;
         position: relative;
         top: 2px;
+    }
+    .delBtn {
+        position: absolute;
+        right: 50%;
+        top: 6px;
+        font-size: 15px;
+        width: 40px;
+        height: 35px;
+    }
+    .el-icon-delete {
+        display: block;
+        width: 6px;
+        height: 6px;
+        margin-left: -1px;
+        margin-top: -7px;
+    }
+    .fileList {
+        height: 20px;
+        padding: 10px;
     }
 </style>
