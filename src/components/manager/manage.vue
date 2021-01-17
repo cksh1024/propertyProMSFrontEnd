@@ -10,7 +10,7 @@
         <!--<img alt="logo" src="./picture/logo1.png" class="logo">-->
       </div>
 
-      <router-link to="/manager">
+      <router-link to="/manager/managerInfo">
       <el-menu-item index="1">
           <i class="el-icon-menu"></i>
           <span slot="title">主页</span>
@@ -41,27 +41,20 @@
           <router-link to="/manager/creatproject" v-if="'模型主管'===staffInfo.statusType">
             <el-menu-item index="3-1">项目创建</el-menu-item>
           </router-link>
+          <router-link to="/manager/file">
+            <el-menu-item index="3-2">项目文件下载</el-menu-item>
+          </router-link>
           <router-link to="/manager/projectaudit">
-            <el-menu-item index="3-2">项目审核</el-menu-item>
+            <el-menu-item index="3-3">项目审核</el-menu-item>
           </router-link>
           <router-link to="/manager/projectback" v-if="'模型主管'!==staffInfo.statusType">
-            <el-menu-item index="3-3">项目回退</el-menu-item>
+            <el-menu-item index="3-4">项目回退</el-menu-item>
           </router-link>
           <router-link to="/manager/projectswitch">
-            <el-menu-item index="3-3">项目交付</el-menu-item>
+            <el-menu-item index="3-5">项目交付</el-menu-item>
           </router-link>
         </el-menu-item-group>
       </el-submenu>
-
-      <router-link to="/manager/managerInfo">
-      <el-menu-item index="4">
-        <template slot="title">
-          <i class="el-icon-coin"></i>
-          <span>工资信息管理</span>
-        </template>
-      </el-menu-item>
-      </router-link>
-
   </el-menu>
     <Header/>
   <div class="box">

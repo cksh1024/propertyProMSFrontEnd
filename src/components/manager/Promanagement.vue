@@ -1,12 +1,13 @@
 <template>
-    <div>
-          <p>项目阶段完成，进入下一阶段指定下一个团队主管</p>          
+    <div style="text-align:center">
+          <h1>项目阶段完成，进入下一阶段指定下一个团队主管</h1>
+          <br><br>          
           <el-table
             ref="singleTable"
             :data="tableData"
             highlight-current-row
             @current-change="handleCurrentChange"
-            style="width: 100%">
+            style="width: 660px;margin:0 auto;">
             <el-table-column
               type="index"
               width="50">
@@ -78,10 +79,12 @@ export default {
               param.append('proId', sessionStorage.getItem('proId'))
               axios.post('lclgl/switchprostage', param)
              .then(res => {
-                alert(res.data.msg)
+                this.$message.success(res.data.msg)
+                this.showfreeManagers()
+                this.$router.replace('/manager/projectswitch')
               })
             } else {
-              alert('请先选择项目')
+              this.$message.warning('请先选择项目')
             }
       }
     },

@@ -1,12 +1,12 @@
 <template>
-  <div>
-      <p>已有项目</p>
+  <div style="text-align:center">
+      <h1>已有项目</h1>
         <el-table
             ref="singleTable"
             :data="tableData"
             highlight-current-row
             @current-change="handleCurrentChange"
-            style="width: 100%">
+            style="width: 660px;margin:0 auto;">
             <el-table-column
               type="index"
               width="50">
@@ -59,7 +59,7 @@ export default {
               sessionStorage.setItem('proId', this.currentRow.proId)
               this.$router.push('/manager/Promanagement')
             } else {
-              alert('请先选择项目')
+              this.$message.warning('请先选择项目')
             }
         },
         showmanagePro () {
@@ -75,11 +75,11 @@ export default {
               param.append('completepro', JSON.stringify(this.currentRow))
               axios.post('lclgl/CompletePro', param)
               .then(res => {
-                alert(res.data.msg)
+                this.$message.success(res.data.msg)
                 this.showmanagePro()
               })
             } else {
-              alert('请先选择项目')
+              this.$message.warning('请先选择项目')
             }
         }
     },

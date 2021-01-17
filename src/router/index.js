@@ -130,6 +130,7 @@ export default new Router({
     {
       path: '/manager',
       component: Manager,
+      redirect: '/manager/managerInfo',
       children: [
         {
           path: '/manager/teamworkermanagement',
@@ -154,6 +155,10 @@ export default new Router({
         {
           path: '/manager/projectback',
           component: ProjectBack
+        },
+        {
+          path: '/manager/file',
+          component: File
         },
         {
           path: '/manager/projectswitch',

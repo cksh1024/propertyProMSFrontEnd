@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="text-align:center">
       <el-input
             placeholder="请输入项目名称"
             class="manager_input"
@@ -27,11 +27,11 @@
             <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
             <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">创建项目</el-button>
           </el-upload>
-          <p>已有项目</p>
+          <h1>已有项目</h1>
           <el-table
             ref="singleTable"
             :data="tableData"
-            style="width: 100%">
+            style="width: 660px;margin:0 auto;">
             <el-table-column
               property="proId"
               label="项目编号"
@@ -74,14 +74,13 @@ export default {
             param.append('cus_name', this.cus_name)
             axios.post('lclgl/createproject', param)
             .then(res => {
-                alert(res.data.msg)
+                this.$message.success(res.data.msg)
                 this.showmanagePro()
             })
       },
       showmanagePro () {
             axios.post('lclgl/showmanagePro')
             .then(res => {
-                console.log(res.data)
                 this.tableData = res.data
             })
         },
