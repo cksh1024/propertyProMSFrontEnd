@@ -17,11 +17,55 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data () {
-    return {}
+    return {
+      Jan: 0,
+      Feb: 0,
+      Mar: 0,
+      Apri: 0,
+      May: 0,
+      Jane: 0,
+      July: 0,
+      Aug: 0,
+      Sep: 0,
+      Oct: 0,
+      Nov: 0,
+      Dec: 0,
+      SuperuserNum: 0,
+      managerNum: 0,
+      frontDestNum: 0,
+      OldHandNum: 0,
+      NewHandNum: 0
+    }
   },
   methods: {
+    getchartsInfos () {
+      axios.post('/lclgl/getChartsInfos')
+      .then(res => {
+        this.SuperuserNum = res.data.RoundChart.SuperuserNum
+        this.managerNum = res.data.RoundChart.Manager
+        this.frontDestNum = res.data.RoundChart.FrontNum
+        this.OldHandNum = res.data.RoundChart.OldHand
+        this.NewHandNum = res.data.RoundChart.NewHand
+        this.Jan = res.data.CostChart.Jan
+        this.Feb = res.data.CostChart.Feb
+        this.Mar = res.data.CostChart.Mar
+        this.Apri = res.data.CostChart.Apri
+        this.May = res.data.CostChart.May
+        this.Jane = res.data.CostChart.Jane
+        this.July = res.data.CostChart.July
+        this.Aug = res.data.CostChart.Aug
+        this.Sep = res.data.CostChart.Sep
+        this.Oct = res.data.CostChart.Oct
+        this.Nov = res.data.CostChart.Nov
+        this.Dec = res.data.CostChart.Dec
+        console.log(res.data.CostChart)
+        this.drawLine()
+        this.label_vist()
+      })
+    },
     drawLine () {
       let myChart = this.$echarts.init(
         document.getElementById('myChart'),
@@ -77,18 +121,18 @@ export default {
             name: '收益',
             type: 'bar',
             data: [
-              Math.ceil(Math.random() * 1000),
-              Math.ceil(Math.random() * 1000),
-              Math.ceil(Math.random() * 1000),
-              Math.ceil(Math.random() * 1000),
-              Math.ceil(Math.random() * 1000),
-              Math.ceil(Math.random() * 1000),
-              Math.ceil(Math.random() * 1000),
-              Math.ceil(Math.random() * 1000),
-              Math.ceil(Math.random() * 1000),
-              Math.ceil(Math.random() * 1000),
-              Math.ceil(Math.random() * 1000),
-              Math.ceil(Math.random() * 1000)
+              0,
+              200000,
+              90000,
+              120000,
+              150000,
+              130000,
+              0,
+              120000,
+              120000,
+              90000,
+              150000,
+              140000
             ],
             markPoint: {
               data: [
@@ -104,18 +148,18 @@ export default {
             name: '支出',
             type: 'bar',
             data: [
-              Math.ceil(Math.random() * -600),
-              Math.ceil(Math.random() * -600),
-              Math.ceil(Math.random() * -600),
-              Math.ceil(Math.random() * -600),
-              Math.ceil(Math.random() * -600),
-              Math.ceil(Math.random() * -600),
-              Math.ceil(Math.random() * -600),
-              Math.ceil(Math.random() * -600),
-              Math.ceil(Math.random() * -600),
-              Math.ceil(Math.random() * -600),
-              Math.ceil(Math.random() * -600),
-              Math.ceil(Math.random() * -600)
+              this.Jan * -1,
+              this.Feb * -1,
+              this.Mar * -1,
+              this.Apri * -1,
+              this.May * -1,
+              this.Jane * -1,
+              this.July * -1,
+              this.Aug * -1,
+              this.Sep * -1,
+              this.Oct * -1,
+              this.Nov * -1,
+              this.Dec * -1
             ],
             markPoint: {
               data: [
@@ -157,11 +201,11 @@ export default {
             radius: '55%',
             center: ['50%', '60%'],
             data: [
-              { value: 1, name: '老板' },
-              { value: 1, name: '前台' },
-              { value: 3, name: '主管' },
-              { value: 5, name: '熟手' },
-              { value: 8, name: '学员' }
+              { value: this.SuperuserNum, name: '老板' },
+              { value: this.frontDestNum, name: '前台' },
+              { value: this.managerNum, name: '主管' },
+              { value: this.OldHandNum, name: '熟手' },
+              { value: this.NewHandNum, name: '学员' }
             ],
             emphasis: {
               itemStyle: {
@@ -176,8 +220,7 @@ export default {
     }
   },
   mounted () {
-    this.drawLine()
-    this.label_vist()
+    this.getchartsInfos()
   }
 }
 </script>

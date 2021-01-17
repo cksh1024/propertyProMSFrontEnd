@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <el-button @click="addStaff">添加员工</el-button>
+<div>
+  <el-button type="primary" @click="dialogFormVisible = true ">添加员工</el-button>
   <el-row :gutter="20">
     <el-col
       :span="5"
@@ -27,8 +27,8 @@
     :visible.sync="dialogVisible"
     width="60%"
     :before-close="handleClose">
-     <el-form size="small"  label-width="100px">
-          <el-form-item label="用户图片">
+      <el-form size="small"  label-width="100px">
+        <el-form-item label="用户图片">
             <el-image
             style="width: 140px; height: 200px"
             :src="user.staffPic"
@@ -82,32 +82,91 @@
           </el-form-item>
 
           <el-form-item label="手机">
-            <el-input v-model="user.staffPhone"></el-input>
+            <el-input v-model="user.staffPhone" disabled></el-input>
           </el-form-item>
 
           <el-form-item label="邮箱">
-            <el-input v-model="user.staffEmail"></el-input>
+            <el-input v-model="user.staffEmail" disabled></el-input>
           </el-form-item>
 
           <el-form-item label="QQ">
-            <el-input v-model="user.staffQq"></el-input>
+            <el-input v-model="user.staffQq" disabled></el-input>
           </el-form-item>
 
           <el-form-item label="籍贯">
-            <el-input v-model="user.staffNaplace"></el-input>
+            <el-input v-model="user.staffNaplace" disabled></el-input>
           </el-form-item>
 
           <el-form-item label="教育经历">
-            <el-input type="textarea" :rows="2" v-model="user.staffEdu"></el-input>
+            <el-input type="textarea" :rows="2" v-model="user.staffEdu" disabled></el-input>
           </el-form-item>
 
             <el-form-item label="工作经历">
-            <el-input type="textarea" :rows="2" v-model="user.staffJob"></el-input>
-          </el-form-item>
-        </el-form>
+            <el-input type="textarea" :rows="2" v-model="user.staffJob" disabled></el-input>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
+    <el-dialog title="添加员工" :visible.sync="dialogFormVisible">
+      <el-form ref="form" style="width:500px; margin:0 auto;text-align:center;" label-width="80px">
+        <el-form-item label="姓名">
+                <el-input v-model="staffName"></el-input>
+            </el-form-item>
+            <el-form-item label="性别">
+                <template>
+                    <el-radio v-model="staffSex" label="女">女</el-radio>
+                    <el-radio v-model="staffSex" label="男">男</el-radio>
+                </template>
+            </el-form-item>
+            <el-form-item label="生日">
+                <el-date-picker type="date" placeholder="选择日期" v-model="staffBirthday" style="width: 100%;"></el-date-picker>
+            </el-form-item>
+            <el-form-item label="职位">
+                <el-select v-model="statusId" placeholder="请选择">
+                    <el-option
+                    v-for="item in statusLevels"
+                    :key="item.statusId"
+                    :label="item.statusType"
+                    :value="item.statusId">
+                    </el-option>
+                </el-select>
+            </el-form-item>
+             <el-form-item label="联系电话">
+                <el-input v-model="staffPhone"></el-input>
+            </el-form-item>
+            <el-form-item label="QQ">
+                <el-input v-model="staffQq"></el-input>
+            </el-form-item>
+            <el-form-item label="邮箱">
+                <el-input v-model="staffEmail"></el-input>
+            </el-form-item>
+            <el-form-item label="身份证号">
+                <el-input v-model="staffIdnum"></el-input>
+            </el-form-item>
+            <el-form-item label="籍贯">
+                <el-input v-model="staffNaplace"></el-input>
+            </el-form-item>
+            <el-form-item label="民族">
+                <el-input v-model="staffNation"></el-input>
+            </el-form-item>
+            <el-form-item label="出生地">
+                <el-input v-model="staffBirthplace"></el-input>
+            </el-form-item>
+            <el-form-item label="现居地">
+                <el-input v-model="staffResidence"></el-input>
+            </el-form-item>
+            <el-form-item label="教育经历">
+                <el-input v-model="staffEdu"></el-input>
+            </el-form-item>
+            <el-form-item label="工作经历">
+                <el-input v-model="staffJob"></el-input>
+            </el-form-item>
+            <el-row>
+            <el-button type="success" plain @click="addStaff">添加</el-button>
+            </el-row>
+      </el-form>
     </el-dialog>
   </el-row>
-  </div>
+</div>
 </template>
 
 <script>
@@ -117,7 +176,23 @@ export default {
     return {
       staff_info: [],
       dialogVisible: false,
-      user: {}
+      user: {},
+      dialogFormVisible: false,
+      staffName: '',
+      staffSex: '',
+      statusId: '',
+      staffPhone: '',
+      staffQq: '',
+      staffEmail: '',
+      staffNaplace: '',
+      staffIdnum: '',
+      staffNation: '',
+      staffBirthplace: '',
+      staffResidence: '',
+      staffEdu: '',
+      staffJob: '',
+      staffBirthday: '',
+      statusLevels: []
     }
   },
   methods: {
@@ -142,11 +217,49 @@ export default {
       })
     },
     addStaff () {
-      
+      let param = new FormData()
+      param.append('staffName', this.staffName)
+      param.append('staffSex', this.staffSex)
+      param.append('statusId', this.statusId)
+      param.append('staffPhone', this.staffPhone)
+      param.append('staffQq', this.staffQq)
+      param.append('staffEmail', this.staffEmail)
+      param.append('staffNaplace', this.staffNaplace)
+      param.append('staffIdnum', this.staffIdnum)
+      param.append('staffNation', this.staffNation)
+      param.append('staffBirplace', this.staffBirthplace)
+      param.append('staffResidence', this.staffResidence)
+      param.append('staffEdu', this.staffEdu)
+      param.append('staffJob', this.staffJob)
+      param.append('staffBirthday', this.staffBirthday)
+      axios.post('lclgl/addStaff', param)
+      .then(res => {
+          if (res.data.status === -1) {
+              this.$message.error('添加失败！')
+          } else {
+              this.$message({
+                  message: '添加成功！',
+                  type: 'success'
+              })
+              this.$router.push('/E_information')
+          }
+      })
+      .catch(err => {
+          console.log(err)
+      }) 
     }
   },
   mounted () {
     this.getStaffs()
+     axios.post('lclgl/getStatusLevels')
+        .then(res => {
+            if (res.data.status !== -1) {
+                this.statusLevels = res.data.statusLevels
+            }
+        })
+        .catch(err => {
+            console.log(err)
+        })
   }
 }
 </script>
