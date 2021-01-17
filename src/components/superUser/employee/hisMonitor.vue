@@ -21,9 +21,9 @@
     <el-table-column
       prop="gradeTime"
       label="评级日期"
-      :filters="[{ text: '2020-1-31', value: '2020-1-31' }, { text: '2020-2-29', value: '2020-2-29' },{ text: '2020-3-31', value: '2020-3-31' }
-      ,{ text: '2020-4-30', value: '2020-4-30' },{ text: '2020-5-31', value: '2020-5-31' },{ text: '2020-6-30', value: '2020-6-30' },{ text: '2020-7-31', value: '2020-7-31' }
-      ,{ text: '2020-8-31', value: '2020-8-31' },{ text: '2020-9-30', value: '2020-9-30' },{ text: '2020-10-31', value: '2020-10-31' },{ text: '2020-11-30', value: '2020-11-30' }
+      :filters="[{ text: '2020-01-31', value: '2020-01-31' }, { text: '2020-02-29', value: '2020-02-29' },{ text: '2020-03-31', value: '2020-03-31' }
+      ,{ text: '2020-04-30', value: '2020-04-30' },{ text: '2020-05-31', value: '2020-05-31' },{ text: '2020-06-30', value: '2020-06-30' },{ text: '2020-07-31', value: '2020-07-31' }
+      ,{ text: '2020-08-31', value: '2020-08-31' },{ text: '2020-09-30', value: '2020-09-30' },{ text: '2020-10-31', value: '2020-10-31' },{ text: '2020-11-30', value: '2020-11-30' }
       ,{ text: '2020-12-31', value: '2020-12-31' }]"
       :filter-method="filterTag"
       filter-placement="bottom-end"
@@ -56,12 +56,26 @@ export default {
       .then(res => {
         for (let index in res.data.gradeInfos) {
           res.data.gradeInfos[index].colors = ['#99A9BF', '#F7BA2A', '#FF9900']
+          res.data.gradeInfos[index].gradeTime = this.changeDateFormat(res.data.gradeInfos[index].gradeTime)
         }
         this.grade = res.data.gradeInfos
       })
       .catch(err => {
         console.log(err)
       })
+    },
+    changeDateFormat (cellval) {
+        if (cellval) {
+            var date = new Date(cellval)
+            var month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1
+            var currentDate = date.getDate()
+            currentDate = currentDate < 10 ? '0' + currentDate : currentDate
+            return date.getFullYear() + '-' + month + '-' + currentDate
+        }
+        return ''
+    },
+    filterTag (value, row) {
+      return row.gradeTime === value
     }
   },
   mounted () {

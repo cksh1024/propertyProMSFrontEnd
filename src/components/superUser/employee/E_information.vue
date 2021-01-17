@@ -218,35 +218,35 @@ export default {
     },
     addStaff () {
       let param = new FormData()
-      param.append('staffName', this.staffName)
-      param.append('staffSex', this.staffSex)
-      param.append('statusId', this.statusId)
-      param.append('staffPhone', this.staffPhone)
-      param.append('staffQq', this.staffQq)
-      param.append('staffEmail', this.staffEmail)
-      param.append('staffNaplace', this.staffNaplace)
-      param.append('staffIdnum', this.staffIdnum)
-      param.append('staffNation', this.staffNation)
-      param.append('staffBirplace', this.staffBirthplace)
-      param.append('staffResidence', this.staffResidence)
-      param.append('staffEdu', this.staffEdu)
-      param.append('staffJob', this.staffJob)
-      param.append('staffBirthday', this.staffBirthday)
-      axios.post('lclgl/addStaff', param)
-      .then(res => {
-          if (res.data.status === -1) {
-              this.$message.error('添加失败！')
-          } else {
-              this.$message({
-                  message: '添加成功！',
-                  type: 'success'
-              })
-              this.$router.push('/E_information')
-          }
-      })
-      .catch(err => {
-          console.log(err)
-      }) 
+        param.append('staffName', this.staffName)
+        param.append('staffSex', this.staffSex)
+        param.append('statusId', this.statusId)
+        param.append('staffPhone', this.staffPhone)
+        param.append('staffQq', this.staffQq)
+        param.append('staffEmail', this.staffEmail)
+        param.append('staffNaplace', this.staffNaplace)
+        param.append('staffIdnum', this.staffIdnum)
+        param.append('staffNation', this.staffNation)
+        param.append('staffBirplace', this.staffBirthplace)
+        param.append('staffResidence', this.staffResidence)
+        param.append('staffEdu', this.staffEdu)
+        param.append('staffJob', this.staffJob)
+        param.append('staffBirthday', this.staffBirthday)
+        axios.post('lclgl/addStaff', param)
+        .then(res => {
+            if (res.data.status === -1) {
+                this.$message.error('添加失败！')
+            } else {
+                this.$message({
+                    message: '添加成功！',
+                    type: 'success'
+                })
+                this.dialogFormVisible = false
+            }
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
   },
   mounted () {
