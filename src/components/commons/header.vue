@@ -29,7 +29,7 @@ import {mapState} from 'vuex'
 export default{
   data () {
     return {
-      name: '老王',
+      name: '你好',
       time: '',
       date: ''
     }
@@ -100,11 +100,6 @@ img.person
 {
     font-size: 30px;
     padding: 0px 40px 0px 0px;
-}
-.el-icon-delete
-{
-    font-size: 30px;
-    padding: 0px 150px 0px 0px;
 }
 .scs{
     margin-right:1070px;

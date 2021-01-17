@@ -142,7 +142,7 @@ export default {
       }
       return ''
     },
-    beforeAvatarUpload(file) {
+    beforeAvatarUpload (file) {
       var imgReaderl = new FileReader()
       imgReaderl.onload = evt => {
         this.imageUrl = evt.target.result
@@ -150,7 +150,7 @@ export default {
       imgReaderl.readAsDataURL(file)
       return true
     },
-    handleAvatarSuccess(res, file) {
+    handleAvatarSuccess (res, file) {
       if (++this.status === 2) this.$router.push('/superUser')
     }
   },
