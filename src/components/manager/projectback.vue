@@ -1,12 +1,13 @@
 <template>
-  <div>
-        <p>已有项目</p>
+  <div style="text-align:center">
+        <h1>已有项目</h1>
+        <br><br>
         <el-table
             ref="singleTable"
             :data="tableData"
             highlight-current-row
             @current-change="handleCurrentChange"
-            style="width: 100%">
+            style="width: 660px;margin:0 auto;">
             <el-table-column
               type="index"
               width="50">
@@ -31,6 +32,7 @@
               label="阶段状况">
             </el-table-column>
           </el-table>
+          <br>
           <p>项目回退到：</p>  
           <el-select v-model="value" placeholder="请选择">
             <el-option
@@ -57,9 +59,6 @@ export default {
             }, {
               value: '渲染阶段',
               label: '渲染阶段'
-            }, {
-              value: '后期阶段',
-              label: '后期阶段'
             }],
             value: ''
         }
@@ -76,11 +75,11 @@ export default {
               console.log(this.value, this.currentRow)
               axios.post('lclgl/proBack', param)
               .then(res => {
-                alert(res.data.msg)
+                this.$message.success(res.data.msg)
                 this.showmanagePro()
               })
             } else {
-                alert('请选择项目')
+                this.$message.warning('请选择项目')
             }
         },
         showmanagePro () {

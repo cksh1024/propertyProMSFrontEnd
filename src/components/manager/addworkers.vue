@@ -1,11 +1,12 @@
 <template>
-  <div>
-        <p>未被分配的员工</p>
+  <div style="text-align:center">
+        <h1>未被分配的员工</h1>
+        <br><br>
         <el-table
         ref="multipleTable"
         :data="tableData1"
         tooltip-effect="dark"
-        style="width: 100%"
+        style="width: 660px;margin:0 auto;"
         @selection-change="handleSelectionChange">
         <el-table-column
           type="selection"
@@ -53,7 +54,6 @@ export default {
       showfreeworkers () {
             axios.post('lclgl/staffShow')
             .then(res => {
-                console.log(res.data)
                 this.tableData1 = res.data
             })
       },
@@ -62,7 +62,7 @@ export default {
             parma.append('selectedworkers', JSON.stringify(this.multipleSelection))
             axios.post('lclgl/staffselect', parma)
             .then(res => {
-                alert(res.data.msg)
+                this.$message.success(res.data.msg)
                 this.showfreeworkers()
             })
       }

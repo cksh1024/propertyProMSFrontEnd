@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>已有项目</p>
+        <h1>已有项目</h1>
         <el-table
             ref="singleTable"
             :data="tableData"
@@ -185,7 +185,7 @@ export default {
               sessionStorage.setItem('proId', this.currentRow.proId)
               this.$router.replace('/Promanagement')
             } else {
-              alert('请先选择项目')
+              this.$message.warning('请先选择项目')
             }
         },
         showmanagePro () {
@@ -203,11 +203,11 @@ export default {
               console.log(this.value, this.currentRow)
               axios.post('lclgl/proBack', param)
               .then(res => {
-                alert(res.data.msg)
+                this.$message.success(res.data.msg)
                 this.showmanagePro()
               })
             } else {
-                alert('请选择项目')
+                this.$message.warning('请选择项目')
             }
         },
         CompletePro () {
@@ -216,11 +216,11 @@ export default {
               param.append('completepro', JSON.stringify(this.currentRow))
               axios.post('lclgl/CompletePro', param)
               .then(res => {
-                alert(res.data.msg)
+                this.$message.success(res.data.msg)
                 this.showmanagePro()
               })
             } else {
-              alert('请先选择项目')
+              this.$message.warning('请先选择项目')
             }
         },
         showfreeworkers () {
@@ -242,7 +242,7 @@ export default {
             parma.append('selectedworkers', JSON.stringify(this.multipleSelection))
             axios.post('lclgl/staffselect', parma)
             .then(res => {
-                alert(res.data.msg)
+                this.$message.success(res.data.msg)
                 this.showfreeworkers()
                 this.showteamworkers()
             })
@@ -252,7 +252,7 @@ export default {
             param.append('selectedteamworkers', JSON.stringify(this.multipleSelection1))
             axios.post('lclgl/teamworkerselect', param)
             .then(res => {
-                alert(res.data.msg)
+                this.$message.success(res.data.msg)
                 this.showfreeworkers()
                 this.showteamworkers()
             })
@@ -263,7 +263,7 @@ export default {
             param.append('cus_name', this.cus_name)
             axios.post('lclgl/createproject', param)
             .then(res => {
-                alert(res.data.msg)
+                this.$message.success(res.data.msg)
                 this.showmanagePro()
             })
       },
