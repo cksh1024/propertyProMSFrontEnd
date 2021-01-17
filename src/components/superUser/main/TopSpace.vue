@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default{
   data () {
     return {
@@ -37,7 +38,7 @@ export default{
           card_cycle: '位',
           card_cycle_back_color: '#409EFF',
           bottom_title: '总人数',
-          vist_num: 20,
+          vist_num: 0,
           vist_all_icon: 'el-icon-user'
         }, {
           card_title: '公司流动资产',
@@ -62,6 +63,19 @@ export default{
           vist_all_icon: 'el-icon-s-check'
         }]
     }
+  },
+  methods: {
+    getcardsInfos () {
+      axios.post('/lclgl/getCardsinfos')
+      .then(res => {
+          this.web_card_data[0].vist_num = res.data.staffNum
+          this.web_card_data[2].vist_num = res.data.CurrentPros
+          this.web_card_data[3].vist_num = res.data.FinishedPros
+      })
+    }
+  },
+  mounted () {
+    this.getcardsInfos()
   }
 }
 
