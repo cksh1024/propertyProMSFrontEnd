@@ -61,7 +61,7 @@ export default new Router({
     {
       path: '/employee',
       component: Employee,
-      redirect: '/employee/present',
+      redirect: '/employee/homepage',
       children: [
         {
           path: '/employee/client',

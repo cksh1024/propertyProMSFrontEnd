@@ -29,7 +29,7 @@
                         <el-button slot="reference" type="warning">修改</el-button>
                     </el-popconfirm>
                     <el-popconfirm title="确定删除吗？" @confirm="delCustomer(scope.row)">
-                        <el-button slot="reference" type="warning">删除</el-button>
+                        <el-button slot="reference" type="danger">删除</el-button>
                     </el-popconfirm>
                 </template>
             </el-table-column>
